@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRES Rentals — Rio Grande Valley Houses & Apartments</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1C2B28;
+    --paper:#FBF3E4;
+    --paper-2:#F3E9D4;
+    --teal:#1F4B43;
+    --teal-dark:#163832;
+    --marigold:#E7A93B;
+    --clay:#B8492F;
+    --clay-dark:#96391F;
+    --line: rgba(28,43,40,0.14);
+    --font-display: 'Fraunces', serif;
+    --font-body: 'Work Sans', sans-serif;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+  }
+  a{ color:inherit; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 28px; }
+
+  /* ---------- Header ---------- */
+  header{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 0;
+  }
+  .logo{
+    font-family:var(--font-display);
+    font-weight:600;
+    font-size:22px;
+    letter-spacing:0.01em;
+  }
+  nav{ display:flex; align-items:center; gap:28px; }
+  nav a{
+    text-decoration:none;
+    font-size:14px;
+    font-weight:500;
+    color:var(--ink);
+    opacity:0.75;
+  }
+  nav a:hover{ opacity:1; }
+  .lang-toggle{
+    display:inline-flex;
+    border:1px solid var(--ink);
+    border-radius:999px;
+    overflow:hidden;
+  }
+  .lang-toggle button{
+    font-family:var(--font-body);
+    font-size:13px;
+    font-weight:600;
+    padding:7px 15px;
+    border:none;
+    background:transparent;
+    color:var(--ink);
+    cursor:pointer;
+  }
+  .lang-toggle button.active{
+    background:var(--ink);
+    color:var(--paper);
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:64px 0 56px; }
+  .eyebrow{
+    display:inline-block;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--clay);
+    margin-bottom:18px;
+  }
+  h1{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:clamp(34px, 5.2vw, 58px);
+    line-height:1.06;
+    margin:0 0 22px;
+    max-width:14ch;
+  }
+  h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--teal);
+  }
+  .lede{
+    font-size:18px;
+    max-width:56ch;
+    color:var(--ink);
+    opacity:0.9;
+    margin:0 0 30px;
+  }
+  .lede p{ margin:0 0 14px; }
+  .lede p:last-child{ margin-bottom:0; }
+
+  .badges{ display:flex; flex-wrap:wrap; gap:10px; margin-bottom:34px; }
+  .badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13.5px; font-weight:600;
+    padding:9px 16px;
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-radius:999px;
+  }
+  .badge svg{ width:14px; height:14px; flex-shrink:0; }
+
+  .cta-row{ display:flex; flex-wrap:wrap; gap:14px; }
+  .btn{
+    font-family:var(--font-body);
+    font-size:15px;
+    font-weight:600;
+    padding:14px 26px;
+    border-radius:8px;
+    text-decoration:none;
+    display:inline-block;
+    cursor:pointer;
+    border:1.5px solid transparent;
+  }
+  .btn-primary{
+    background:var(--clay);
+    color:var(--paper);
+  }
+  .btn-primary:hover{ background:var(--clay-dark); }
+  .btn-secondary{
+    background:transparent;
+    border-color:var(--ink);
+    color:var(--ink);
+  }
+  .btn-secondary:hover{ background:var(--ink); color:var(--paper); }
+
+  /* ---------- Roofline divider (signature element) ---------- */
+  .roofline{
+    width:100%;
+    height:34px;
+    display:block;
+  }
+
+  /* ---------- Footer band ---------- */
+  .band{
+    background:var(--teal);
+    color:var(--paper);
+    padding:30px 0;
+  }
+  .band .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:12px;
+  }
+  .band p{
+    margin:0; font-size:14px; opacity:0.88; max-width:60ch;
+  }
+  .band .tag{
+    font-family:var(--font-display);
+    font-size:17px;
+  }
+
+  /* ---------- Apply section ---------- */
+  .apply-section{ padding:64px 0 72px; scroll-margin-top:24px; }
+  .apply-intro{ max-width:640px; margin:0 0 36px; }
+  .apply-title{
+    font-family:var(--font-display); font-weight:500;
+    font-size:clamp(28px, 4.4vw, 42px); line-height:1.1; margin:0 0 14px;
+  }
+  .apply-sub{ font-size:16px; opacity:0.85; max-width:60ch; margin:0 0 8px; }
+  .apply-note{
+    font-size:14px; opacity:0.8; margin:18px 0 0;
+    background:var(--paper-2); border:1px solid var(--line);
+    border-radius:10px; padding:12px 16px;
+  }
+  form.apply-form{ max-width:720px; }
+  fieldset{ border:none; padding:0; margin:0 0 34px; }
+  legend{
+    font-family:var(--font-display); font-size:19px; font-weight:500;
+    color:var(--teal); padding:0 0 14px; width:100%;
+    border-bottom:1px solid var(--line); margin-bottom:18px;
+  }
+  .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .form-grid .full{ grid-column:1 / -1; }
+  .apply-form label{ display:block; font-size:13.5px; font-weight:600; margin-bottom:6px; }
+  .apply-form input, .apply-form select, .apply-form textarea{
+    width:100%; font-family:var(--font-body); font-size:15px;
+    padding:11px 13px; border:1px solid var(--line); border-radius:8px;
+    background:#fff; color:var(--ink);
+  }
+  .apply-form input:focus, .apply-form select:focus, .apply-form textarea:focus{
+    outline:2px solid var(--teal); outline-offset:1px;
+  }
+  .apply-form textarea{ resize:vertical; min-height:90px; }
+  .form-field{ margin-bottom:16px; }
+  .checkbox-row{
+    display:flex; align-items:flex-start; gap:10px;
+    background:var(--paper-2); border:1px solid var(--line);
+    border-radius:10px; padding:14px 16px;
+  }
+  .checkbox-row input{ width:auto; margin-top:3px; }
+  .checkbox-row label{ margin:0; font-weight:500; font-size:14.5px; }
+  .hint{ font-size:12.5px; opacity:0.7; margin-top:4px; font-weight:400; }
+  .submit-row{ display:flex; align-items:center; gap:16px; margin-top:8px; }
+  .confirm-msg{
+    display:none; margin-top:20px; padding:16px 18px;
+    background:var(--teal); color:var(--paper); border-radius:10px; font-size:14.5px;
+  }
+  .confirm-msg.show{ display:block; }
+
+  /* ---------- Properties section ---------- */
+  .properties-section{ padding:64px 0 72px; background:var(--paper-2); scroll-margin-top:24px; }
+  .properties-intro{ max-width:640px; margin:0 0 36px; }
+  .properties-title{
+    font-family:var(--font-display); font-weight:500;
+    font-size:clamp(28px, 4.4vw, 42px); line-height:1.1; margin:0 0 10px;
+  }
+  .properties-sub{ font-size:16px; opacity:0.85; max-width:60ch; margin:0; }
+
+  .property-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px;
+    overflow:hidden; display:grid; grid-template-columns:340px 1fr;
+  }
+  .property-gallery{ background:var(--ink); }
+  .property-main-photo{
+    width:100%; aspect-ratio:4/3; object-fit:cover; display:block; cursor:pointer;
+  }
+  .property-thumbs{
+    display:flex; gap:6px; padding:8px; overflow-x:auto; background:var(--teal-dark);
+  }
+  .property-thumbs img{
+    width:56px; height:56px; object-fit:cover; border-radius:6px; cursor:pointer;
+    flex-shrink:0; border:2px solid transparent; opacity:0.85;
+  }
+  .property-thumbs img:hover{ opacity:1; }
+
+  .property-body{ padding:26px 28px; }
+  .property-top{
+    display:flex; align-items:flex-start; justify-content:space-between;
+    gap:12px; flex-wrap:wrap; margin-bottom:6px;
+  }
+  .property-address{
+    font-family:var(--font-display); font-size:22px; font-weight:500; margin:0;
+  }
+  .property-status{
+    font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.06em;
+    color:var(--teal); background:rgba(31,75,67,0.1);
+    padding:5px 11px; border-radius:999px; white-space:nowrap;
+  }
+  .property-price{ font-size:15px; font-weight:600; color:var(--clay); margin:0 0 14px; }
+  .property-price span{ font-weight:400; opacity:0.75; }
+
+  .property-specs{ display:flex; flex-wrap:wrap; gap:18px; margin-bottom:16px; }
+  .property-specs div{ font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px; }
+  .property-specs svg{ width:16px; height:16px; stroke:var(--teal); flex-shrink:0; }
+
+  .property-desc{ font-size:15px; opacity:0.92; margin:0 0 18px; max-width:60ch; }
+  .property-contact{ font-size:14px; font-weight:600; margin:0 0 18px; }
+  .property-contact a{ color:var(--teal); text-decoration:none; }
+  .property-contact a:hover{ text-decoration:underline; }
+
+  /* Lightbox */
+  .lightbox{
+    display:none; position:fixed; inset:0; background:rgba(20,26,24,0.92);
+    z-index:100; align-items:center; justify-content:center; padding:24px;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox img{ max-width:min(88vw, 780px); max-height:82vh; border-radius:8px; object-fit:contain; }
+  .lightbox-close, .lightbox-prev, .lightbox-next{
+    position:absolute; background:rgba(255,255,255,0.12); color:#fff; border:none;
+    border-radius:999px; width:42px; height:42px; font-size:20px; cursor:pointer;
+  }
+  .lightbox-close:hover, .lightbox-prev:hover, .lightbox-next:hover{ background:rgba(255,255,255,0.22); }
+  .lightbox-close{ top:20px; right:20px; }
+  .lightbox-prev{ left:20px; top:50%; transform:translateY(-50%); }
+  .lightbox-next{ right:20px; top:50%; transform:translateY(-50%); }
+
+  @media (max-width:720px){
+    .property-card{ grid-template-columns:1fr; }
+  }
+
+  [data-lang]{ display:none; }
+  [data-lang].is-visible{ display:block; }
+  span[data-lang].is-visible{ display:inline; }
+  .eyebrow[data-lang].is-visible{ display:inline-block; }
+
+  @media (max-width:640px){
+    header{ flex-wrap:wrap; gap:14px; }
+    nav{ gap:16px; order:3; width:100%; justify-content:flex-start; }
+    .hero{ padding:40px 0 44px; }
+    .form-grid{ grid-template-columns:1fr; }
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .hero > *{
+      animation: rise 0.6s ease both;
+    }
+    .hero > *:nth-child(2){ animation-delay:0.05s; }
+    .hero > *:nth-child(3){ animation-delay:0.1s; }
+    .hero > *:nth-child(4){ animation-delay:0.15s; }
+    .hero > *:nth-child(5){ animation-delay:0.2s; }
+    @keyframes rise{
+      from{ opacity:0; transform:translateY(8px); }
+      to{ opacity:1; transform:translateY(0); }
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="logo">CRES</div>
+    <nav>
+      <a href="#properties">
+        <span data-lang="en">Properties</span>
+        <span data-lang="es">Propiedades</span>
+      </a>
+      <a href="#apply">
+        <span data-lang="en">Apply</span>
+        <span data-lang="es">Aplicar</span>
+      </a>
+      <a href="#">
+        <span data-lang="en">Contact</span>
+        <span data-lang="es">Contacto</span>
+      </a>
+      <div class="lang-toggle">
+        <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+        <button id="btn-es" onclick="setLang('es')">ES</button>
+      </div>
+    </nav>
+  </header>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow" data-lang="en">Rentals across the Rio Grande Valley</span>
+    <span class="eyebrow" data-lang="es">Rentas en todo el Valle del R&iacute;o Grande</span>
+
+    <div data-lang="en">
+      <h1>Welcome home to the <em>Valley</em></h1>
+    </div>
+    <div data-lang="es">
+      <h1>Bienvenido a casa en el <em>Valle</em></h1>
+    </div>
+
+    <div class="lede" data-lang="en">
+      <p>At CRES, we believe finding a place to call home shouldn&rsquo;t be complicated or out of reach. We&rsquo;re a locally rooted rental company serving the Rio Grande Valley with quality houses and apartments at prices that make sense for real families and real budgets.</p>
+      <p>We&rsquo;re proud to support our gente across the Valley &mdash; everyone is welcome to apply, with no application fee, ever. Housing assistance and Section 8 tenants are always welcome here. Whether you&rsquo;re just starting out, growing your family, or looking for a fresh start, our team is here to make the process simple, honest, and fast.</p>
+    </div>
+    <div class="lede" data-lang="es">
+      <p>En CRES, creemos que encontrar un lugar para llamar hogar no debe ser complicado ni estar fuera de tu alcance. Somos una compa&ntilde;&iacute;a de renta local que sirve al Valle del R&iacute;o Grande con casas y apartamentos de calidad, a precios que tienen sentido para familias y presupuestos reales.</p>
+      <p>Nos enorgullece apoyar a nuestra gente en toda la regi&oacute;n &mdash; todos son bienvenidos a aplicar, sin costo de solicitud, nunca. Los inquilinos con asistencia de vivienda y Secci&oacute;n 8 siempre son bienvenidos aqu&iacute;. Ya sea que est&eacute;s comenzando de nuevo, formando tu familia, o buscando un nuevo comienzo, nuestro equipo est&aacute; aqu&iacute; para hacer el proceso simple, honesto y r&aacute;pido.</p>
+    </div>
+
+    <div class="badges">
+      <span class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <span data-lang="en">No application fee</span>
+        <span data-lang="es">Sin costo de solicitud</span>
+      </span>
+      <span class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <span data-lang="en">Section 8 &amp; housing assistance welcome</span>
+        <span data-lang="es">Secci&oacute;n 8 y asistencia de vivienda bienvenida</span>
+      </span>
+      <span class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+        <span data-lang="en">Everyone is welcome to apply</span>
+        <span data-lang="es">Todos son bienvenidos a aplicar</span>
+      </span>
+    </div>
+
+    <div class="cta-row">
+      <a href="#properties" class="btn btn-primary">
+        <span data-lang="en">View available homes</span>
+        <span data-lang="es">Ver casas disponibles</span>
+      </a>
+      <a href="#apply" class="btn btn-secondary">
+        <span data-lang="en">Apply now &mdash; no fee</span>
+        <span data-lang="es">Aplica ahora &mdash; sin costo</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<svg class="roofline" viewBox="0 0 1080 34" preserveAspectRatio="none">
+  <polyline points="0,34 0,20 40,4 80,20 120,20 160,4 200,20 240,20 280,4 320,20 360,20 400,4 440,20 480,20 520,4 560,20 600,20 640,4 680,20 720,20 760,4 800,20 840,20 880,4 920,20 960,20 1000,4 1040,20 1080,20 1080,34"
+    fill="var(--teal)" />
+</svg>
+
+<section class="properties-section" id="properties">
+  <div class="wrap">
+    <div class="properties-intro">
+      <span class="eyebrow" data-lang="en">Available now</span>
+      <span class="eyebrow" data-lang="es">Disponible ahora</span>
+      <h2 class="properties-title" data-lang="en">Find your next home in the Valley</h2>
+      <h2 class="properties-title" data-lang="es">Encuentra tu pr&oacute;ximo hogar en el Valle</h2>
+      <p class="properties-sub" data-lang="en">More listings are on the way &mdash; here&rsquo;s what&rsquo;s open right now.</p>
+      <p class="properties-sub" data-lang="es">Pronto habr&aacute; m&aacute;s propiedades &mdash; esto es lo que est&aacute; disponible ahora.</p>
+    </div>
+
+    <div class="property-card">
+      <div class="property-gallery">
+        <img class="property-main-photo" id="rosalee-main" src="images/rosalee/FrontRosalee.jpg" alt="2637 Rosalee Ave" onclick="openLightbox('rosalee', 0)">
+        <div class="property-thumbs">
+          <img src="images/rosalee/FrontRosalee.jpg" alt="Front of building" onclick="setMainPhoto('rosalee', 0)">
+          <img src="images/rosalee/LivingRoom.jpg" alt="Living room" onclick="setMainPhoto('rosalee', 1)">
+          <img src="images/rosalee/kitchen.jpg" alt="Kitchen" onclick="setMainPhoto('rosalee', 2)">
+          <img src="images/rosalee/Room.jpg" alt="Bedroom" onclick="setMainPhoto('rosalee', 3)">
+          <img src="images/rosalee/room1.jpg" alt="Bedroom" onclick="setMainPhoto('rosalee', 4)">
+          <img src="images/rosalee/Room2.jpg" alt="Bedroom closet" onclick="setMainPhoto('rosalee', 5)">
+          <img src="images/rosalee/bath.jpg" alt="Bathroom" onclick="setMainPhoto('rosalee', 6)">
+          <img src="images/rosalee/bath2.jpg" alt="Bathroom sink" onclick="setMainPhoto('rosalee', 7)">
+          <img src="images/rosalee/HVAC.jpg" alt="Central AC unit" onclick="setMainPhoto('rosalee', 8)">
+        </div>
+      </div>
+
+      <div class="property-body">
+        <div class="property-top">
+          <h3 class="property-address">2637 Rosalee Ave</h3>
+          <span class="property-status" data-lang="en">Available now</span>
+          <span class="property-status" data-lang="es">Disponible ahora</span>
+        </div>
+        <p class="property-price" data-lang="en">$865/month <span>&middot; $760 deposit</span></p>
+        <p class="property-price" data-lang="es">$865/mes <span>&middot; $760 de dep&oacute;sito</span></p>
+
+        <div class="property-specs">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 10v9M21 10v9M3 14h18M5 14V7a2 2 0 012-2h3a2 2 0 012 2v1M12 8v1h7a2 2 0 012 2v3"/></svg>2 <span data-lang="en">bed</span><span data-lang="es">rec&aacute;maras</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 12h16M6 12V5a1 1 0 011-1h2a1 1 0 011 1v2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg>1 <span data-lang="en">bath</span><span data-lang="es">ba&ntilde;o</span></div>
+          <div><span data-lang="en">Upstairs unit</span><span data-lang="es">Unidad de arriba</span></div>
+        </div>
+
+        <p class="property-desc" data-lang="en">A bright, second-floor two-bedroom apartment with central AC, hookups for a washer and dryer, and a stove and refrigerator included. Small, trained pets are welcome, and housing assistance is welcome. Maximum 4 occupants and 2 vehicles.</p>
+        <p class="property-desc" data-lang="es">Un luminoso apartamento de dos rec&aacute;maras en el segundo piso, con aire acondicionado central, conexiones para lavadora y secadora, y estufa y refrigerador incluidos. Se aceptan mascotas peque&ntilde;as y entrenadas, y se acepta asistencia de vivienda. M&aacute;ximo 4 personas y 2 veh&iacute;culos.</p>
+
+        <p class="property-contact" data-lang="en">Call Silvia at <a href="tel:6156369909">(615) 636-9909</a></p>
+        <p class="property-contact" data-lang="es">Llama a Silvia al <a href="tel:6156369909">(615) 636-9909</a></p>
+
+        <a href="#apply" class="btn btn-primary">
+          <span data-lang="en">Apply for this home</span>
+          <span data-lang="es">Aplica para esta casa</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="if(event.target===this) closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-prev" onclick="stepLightbox(-1)">&#8249;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-next" onclick="stepLightbox(1)">&#8250;</button>
+</div>
+
+<section class="apply-section" id="apply">
+  <div class="wrap">
+    <div class="apply-intro">
+      <span class="eyebrow" data-lang="en">No application fee</span>
+      <span class="eyebrow" data-lang="es">Sin costo de solicitud</span>
+
+      <h2 class="apply-title" data-lang="en">Rental application</h2>
+      <h2 class="apply-title" data-lang="es">Solicitud de renta</h2>
+
+      <p class="apply-sub" data-lang="en">Fill out the form below and our team will reach out. Housing assistance and Section 8 tenants are always welcome &mdash; there&rsquo;s no fee to apply.</p>
+      <p class="apply-sub" data-lang="es">Completa el siguiente formulario y nuestro equipo se pondr&aacute;a en contacto contigo. Los inquilinos con asistencia de vivienda y Secci&oacute;n 8 siempre son bienvenidos &mdash; no hay costo por aplicar.</p>
+
+      <p class="apply-note" data-lang="en">For your security, please don&rsquo;t include your Social Security number here. If it&rsquo;s needed later in the process, we&rsquo;ll collect it through a secure, separate step.</p>
+      <p class="apply-note" data-lang="es">Por tu seguridad, por favor no incluyas tu n&uacute;mero de Seguro Social aqu&iacute;. Si se necesita m&aacute;s adelante en el proceso, lo solicitaremos por un paso separado y seguro.</p>
+    </div>
+
+    <form class="apply-form" id="apply-form">
+      <fieldset>
+        <legend data-lang="en">Applicant information</legend>
+        <legend data-lang="es">Informaci&oacute;n del solicitante</legend>
+        <div class="form-grid">
+          <div class="form-field">
+            <label data-lang="en">Full name</label>
+            <label data-lang="es">Nombre completo</label>
+            <input type="text" name="full_name" required>
+          </div>
+          <div class="form-field">
+            <label data-lang="en">Phone number</label>
+            <label data-lang="es">N&uacute;mero de tel&eacute;fono</label>
+            <input type="tel" name="phone" required>
+          </div>
+          <div class="form-field full">
+            <label data-lang="en">Email</label>
+            <label data-lang="es">Correo electr&oacute;nico</label>
+            <input type="email" name="email" required>
+          </div>
+          <div class="form-field full">
+            <label data-lang="en">Current address</label>
+            <label data-lang="es">Direcci&oacute;n actual</label>
+            <input type="text" name="current_address" required>
+          </div>
+          <div class="form-field">
+            <label data-lang="en">Number of occupants</label>
+            <label data-lang="es">N&uacute;mero de ocupantes</label>
+            <input type="number" name="occupants" min="1">
+          </div>
+          <div class="form-field">
+            <label data-lang="en">Do you have pets?</label>
+            <label data-lang="es">&iquest;Tienes mascotas?</label>
+            <select name="pets" id="pets-select">
+              <option value="no" data-en="No" data-es="No">No</option>
+              <option value="yes" data-en="Yes" data-es="S&iacute;">Yes</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-lang="en">What you&rsquo;re looking for</legend>
+        <legend data-lang="es">Lo que est&aacute;s buscando</legend>
+        <div class="form-grid">
+          <div class="form-field full">
+            <label data-lang="en">Property or area of interest</label>
+            <label data-lang="es">Propiedad o &aacute;rea de inter&eacute;s</label>
+            <input type="text" name="property_interest" placeholder="Optional">
+          </div>
+          <div class="form-field">
+            <label data-lang="en">Desired move-in date</label>
+            <label data-lang="es">Fecha deseada de mudanza</label>
+            <input type="date" name="move_in_date">
+          </div>
+          <div class="form-field">
+            <label data-lang="en">Monthly budget</label>
+            <label data-lang="es">Presupuesto mensual</label>
+            <input type="text" name="budget" placeholder="$">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-lang="en">Employment and income</legend>
+        <legend data-lang="es">Empleo e ingresos</legend>
+        <div class="form-grid">
+          <div class="form-field">
+            <label data-lang="en">Employer</label>
+            <label data-lang="es">Empleador</label>
+            <input type="text" name="employer">
+          </div>
+          <div class="form-field">
+            <label data-lang="en">Monthly income</label>
+            <label data-lang="es">Ingreso mensual</label>
+            <input type="text" name="income" placeholder="$">
+          </div>
+        </div>
+        <div class="checkbox-row" style="margin-top:4px;">
+          <input type="checkbox" id="assistance" name="housing_assistance">
+          <div>
+            <label for="assistance" data-lang="en">I receive Section 8 or another housing assistance voucher</label>
+            <label for="assistance" data-lang="es">Recibo Secci&oacute;n 8 u otro vale de asistencia de vivienda</label>
+            <div class="hint" data-lang="en">This never affects your eligibility to apply &mdash; all housing assistance is welcome.</div>
+            <div class="hint" data-lang="es">Esto nunca afecta tu elegibilidad para aplicar &mdash; toda asistencia de vivienda es bienvenida.</div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-lang="en">Anything else we should know</legend>
+        <legend data-lang="es">Algo m&aacute;s que debamos saber</legend>
+        <div class="form-field full">
+          <textarea name="notes" placeholder="Optional"></textarea>
+        </div>
+      </fieldset>
+
+      <div class="submit-row">
+        <button type="submit" class="btn btn-primary">
+          <span data-lang="en">Submit application</span>
+          <span data-lang="es">Enviar solicitud</span>
+        </button>
+      </div>
+
+      <div class="confirm-msg" id="confirm-msg">
+        <span data-lang="en">Thanks &mdash; your application details are ready to send. (This demo form isn&rsquo;t yet connected to an inbox or database &mdash; see the note below.)</span>
+        <span data-lang="es">Gracias &mdash; los datos de tu solicitud est&aacute;n listos para enviarse. (Este formulario de demostraci&oacute;n a&uacute;n no est&aacute; conectado a un correo o base de datos &mdash; ver la nota abajo.)</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="band">
+  <div class="wrap">
+    <div class="tag" data-lang="en">Browse properties below, or reach out &mdash; we&rsquo;re happy to help.</div>
+    <div class="tag" data-lang="es">Explora las propiedades abajo, o cont&aacute;ctanos &mdash; con gusto te ayudamos.</div>
+    <p data-lang="en">CRES follows Fair Housing guidelines. Equal opportunity in every home we rent.</p>
+    <p data-lang="es">CRES sigue las normas de Vivienda Justa. Igualdad de oportunidades en cada casa que rentamos.</p>
+  </div>
+</footer>
+
+<script>
+function setLang(lang){
+  document.querySelectorAll('[data-lang]').forEach(function(el){
+    el.classList.toggle('is-visible', el.getAttribute('data-lang') === lang);
+  });
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+  document.documentElement.setAttribute('lang', lang);
+  document.querySelectorAll('#pets-select option').forEach(function(opt){
+    opt.textContent = lang === 'es' ? opt.getAttribute('data-es') : opt.getAttribute('data-en');
+  });
+}
+setLang('en');
+
+document.getElementById('apply-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  document.getElementById('confirm-msg').classList.add('show');
+});
+
+/* ---------- Property galleries & lightbox ---------- */
+var galleries = {
+  rosalee: [
+    'images/rosalee/FrontRosalee.jpg',
+    'images/rosalee/LivingRoom.jpg',
+    'images/rosalee/kitchen.jpg',
+    'images/rosalee/Room.jpg',
+    'images/rosalee/room1.jpg',
+    'images/rosalee/Room2.jpg',
+    'images/rosalee/bath.jpg',
+    'images/rosalee/bath2.jpg',
+    'images/rosalee/HVAC.jpg'
+  ]
+};
+var lightboxState = { gallery: null, index: 0 };
+
+function setMainPhoto(name, idx){
+  document.getElementById(name + '-main').src = galleries[name][idx];
+}
+function openLightbox(name, idx){
+  lightboxState = { gallery: name, index: idx };
+  document.getElementById('lightbox-img').src = galleries[name][idx];
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+}
+function stepLightbox(dir){
+  var imgs = galleries[lightboxState.gallery];
+  lightboxState.index = (lightboxState.index + dir + imgs.length) % imgs.length;
+  document.getElementById('lightbox-img').src = imgs[lightboxState.index];
+}
+document.addEventListener('keydown', function(e){
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key === 'Escape') closeLightbox();
+  if(e.key === 'ArrowLeft') stepLightbox(-1);
+  if(e.key === 'ArrowRight') stepLightbox(1);
+});
+</script>
+
+</body>
+</html>
