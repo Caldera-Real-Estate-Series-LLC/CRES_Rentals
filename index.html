@@ -538,9 +538,9 @@
             <input type="date" name="move_in_date">
           </div>
           <div class="form-field">
-            <label data-lang="en">Monthly budget</label>
-            <label data-lang="es">Presupuesto mensual</label>
-            <input type="text" name="budget" placeholder="$">
+            <label data-lang="en">Current monthly rent payment</label>
+            <label data-lang="es">Pago de renta mensual actual</label>
+            <input type="text" name="current_rent" placeholder="$">
           </div>
         </div>
       </fieldset>
@@ -634,7 +634,7 @@ function downloadApplicationDoc(data){
     ['Pets', data.pets === 'yes' ? 'Yes' : 'No'],
     ['Property or area of interest', data.property_interest],
     ['Desired move-in date', data.move_in_date],
-    ['Monthly budget', data.budget],
+    ['Current monthly rent payment', data.current_rent],
     ['Employer', data.employer],
     ['Monthly income', data.income],
     ['Receives housing assistance', data.housing_assistance === 'Yes' ? 'Yes' : 'No'],
