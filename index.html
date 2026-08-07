@@ -218,6 +218,9 @@
   .confirm-msg.show{ display:block; }
   #confirm-success{ background:var(--teal); }
   #confirm-error{ background:var(--clay); }
+  #message-success{ background:var(--teal); }
+  #message-error{ background:var(--clay); }
+  #message-error-contact{ background:var(--clay); }
   .apply-form button[disabled]{ opacity:0.6; cursor:not-allowed; }
 
   /* ---------- Properties section ---------- */
@@ -233,6 +236,7 @@
     background:#fff; border:1px solid var(--line); border-radius:16px;
     overflow:hidden; display:grid; grid-template-columns:340px 1fr;
   }
+  .property-card + .property-card{ margin-top:28px; }
   .property-gallery{ background:var(--ink); }
   .property-main-photo{
     width:100%; aspect-ratio:4/3; object-fit:cover; display:block; cursor:pointer;
@@ -332,7 +336,7 @@
         <span data-lang="en">Apply</span>
         <span data-lang="es">Aplicar</span>
       </a>
-      <a href="#">
+      <a href="#message">
         <span data-lang="en">Contact</span>
         <span data-lang="es">Contacto</span>
       </a>
@@ -453,6 +457,54 @@
           <span data-lang="en">Apply for this home</span>
           <span data-lang="es">Aplica para esta casa</span>
         </a>
+        <a href="#message" class="btn btn-secondary" style="margin-left:10px;">
+          <span data-lang="en">Message us about this home</span>
+          <span data-lang="es">Env&iacute;anos un mensaje sobre esta casa</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="property-card">
+      <div class="property-gallery">
+        <img class="property-main-photo" id="milpaverde-main" src="Rentals/MilpaVerde/Front-Milpa4.jpg" alt="464 Calle Milpa Verde St" onclick="openLightbox('milpaverde', 0)">
+        <div class="property-thumbs">
+          <img src="Rentals/MilpaVerde/Front-Milpa4.jpg" alt="Front of building" onclick="setMainPhoto('milpaverde', 0)">
+          <img src="Rentals/MilpaVerde/Kitchen_Milpa_4.jpg" alt="Kitchen" onclick="setMainPhoto('milpaverde', 1)">
+          <img src="Rentals/MilpaVerde/Bath-Milpa4.jpg" alt="Bathroom" onclick="setMainPhoto('milpaverde', 2)">
+          <img src="Rentals/MilpaVerde/Bed2-Millpa4.jpg" alt="Bedroom" onclick="setMainPhoto('milpaverde', 3)">
+          <img src="Rentals/MilpaVerde/Bedroom1-Milpa4.jpg" alt="Bedroom" onclick="setMainPhoto('milpaverde', 4)">
+        </div>
+      </div>
+
+      <div class="property-body">
+        <div class="property-top">
+          <h3 class="property-address">464 Calle Milpa Verde St</h3>
+          <span class="property-status" data-lang="en">Available now</span>
+          <span class="property-status" data-lang="es">Disponible ahora</span>
+        </div>
+        <p class="property-price" data-lang="en">$750/month <span>&middot; $570 deposit</span></p>
+        <p class="property-price" data-lang="es">$750/mes <span>&middot; $570 de dep&oacute;sito</span></p>
+
+        <div class="property-specs">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 10v9M21 10v9M3 14h18M5 14V7a2 2 0 012-2h3a2 2 0 012 2v1M12 8v1h7a2 2 0 012 2v3"/></svg>2 <span data-lang="en">bed</span><span data-lang="es">rec&aacute;maras</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 12h16M6 12V5a1 1 0 011-1h2a1 1 0 011 1v2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg>1 <span data-lang="en">bath</span><span data-lang="es">ba&ntilde;o</span></div>
+          <div><span data-lang="en">Parking for 1 vehicle</span><span data-lang="es">Estacionamiento para 1 veh&iacute;culo</span></div>
+        </div>
+
+        <p class="property-desc" data-lang="en">A newly remodeled two-bedroom, one-bath apartment with a mini-split central air system, brand-new flooring, and a fully renovated bathroom. Water and sewage are included. Small, trained pets are welcome, and housing assistance is welcome. Available now on a 12-month lease. Please note: there are no washer/dryer hookups.</p>
+        <p class="property-desc" data-lang="es">Un apartamento de dos rec&aacute;maras y un ba&ntilde;o reci&eacute;n remodelado, con aire acondicionado tipo mini-split, piso nuevo y ba&ntilde;o completamente renovado. Incluye agua y drenaje. Se aceptan mascotas peque&ntilde;as y entrenadas, y se acepta asistencia de vivienda. Disponible ya, con contrato de 12 meses. Nota: no hay conexi&oacute;n para lavadora ni secadora.</p>
+
+        <p class="property-contact" data-lang="en">Call Silvia at <a href="tel:6156369909">(615) 636-9909</a></p>
+        <p class="property-contact" data-lang="es">Llama a Silvia al <a href="tel:6156369909">(615) 636-9909</a></p>
+
+        <a href="#apply" class="btn btn-primary">
+          <span data-lang="en">Apply for this home</span>
+          <span data-lang="es">Aplica para esta casa</span>
+        </a>
+        <a href="#message" class="btn btn-secondary" style="margin-left:10px;">
+          <span data-lang="en">Message us about this home</span>
+          <span data-lang="es">Env&iacute;anos un mensaje sobre esta casa</span>
+        </a>
       </div>
     </div>
   </div>
@@ -478,7 +530,7 @@
       <p class="apply-sub" data-lang="es">Completa el siguiente formulario y nuestro equipo se pondr&aacute;a en contacto contigo. Los inquilinos con asistencia de vivienda y Secci&oacute;n 8 siempre son bienvenidos &mdash; no hay costo por aplicar.</p>
 
       <p class="apply-note" data-lang="en">For your security, please don&rsquo;t include your Social Security number here. If it&rsquo;s needed later in the process, we&rsquo;ll collect it through a secure, separate step.</p>
-      <p class="apply-note" data-lang="es">Por tu seguridad, por favor no incluyas tu n&uacute;mero de Seguro Social aqu&iacute;. Si se necesita m&aacute;s adelante en el proceso, lo solicitaremos por un paso separado y seguro. Seguro Social no siempre es requerido.</p>
+      <p class="apply-note" data-lang="es">Por tu seguridad, por favor no incluyas tu n&uacute;mero de Seguro Social aqu&iacute;. Si se necesita m&aacute;s adelante en el proceso, lo solicitaremos por un paso separado y seguro.</p>
     </div>
 
     <form class="apply-form" id="apply-form">
@@ -598,6 +650,68 @@
   </div>
 </section>
 
+<section class="apply-section" id="message" style="background:var(--paper-2);">
+  <div class="wrap">
+    <div class="apply-intro">
+      <span class="eyebrow" data-lang="en">Questions?</span>
+      <span class="eyebrow" data-lang="es">&iquest;Preguntas?</span>
+
+      <h2 class="apply-title" data-lang="en">Message us</h2>
+      <h2 class="apply-title" data-lang="es">Env&iacute;anos un mensaje</h2>
+
+      <p class="apply-sub" data-lang="en">Send us a message and someone will contact you shortly. Please include your email or phone number so we can reach you back.</p>
+      <p class="apply-sub" data-lang="es">Env&iacute;anos un mensaje y alguien se pondr&aacute; en contacto contigo pronto. Por favor incluye tu correo electr&oacute;nico o n&uacute;mero de tel&eacute;fono para poder responderte.</p>
+    </div>
+
+    <form class="apply-form" id="message-form" style="max-width:520px;">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="form-field">
+        <label data-lang="en">Name</label>
+        <label data-lang="es">Nombre</label>
+        <input type="text" name="name" placeholder="Optional">
+      </div>
+      <div class="form-field">
+        <label data-lang="en">Email</label>
+        <label data-lang="es">Correo electr&oacute;nico</label>
+        <input type="email" name="email" id="message-email">
+      </div>
+      <div class="form-field">
+        <label data-lang="en">Phone number</label>
+        <label data-lang="es">N&uacute;mero de tel&eacute;fono</label>
+        <input type="tel" name="phone" id="message-phone">
+      </div>
+      <p class="hint" id="message-contact-hint" data-lang="en" style="margin:-8px 0 16px;">Please fill in at least one of email or phone.</p>
+      <p class="hint" id="message-contact-hint-es" data-lang="es" style="margin:-8px 0 16px;">Por favor completa al menos uno: correo o tel&eacute;fono.</p>
+
+      <div class="form-field">
+        <label data-lang="en">Message</label>
+        <label data-lang="es">Mensaje</label>
+        <textarea name="message" required></textarea>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="btn btn-primary">
+          <span data-lang="en">Send message</span>
+          <span data-lang="es">Enviar mensaje</span>
+        </button>
+      </div>
+
+      <div class="confirm-msg" id="message-error-contact">
+        <span data-lang="en">Please include your email or phone number so we can get back to you.</span>
+        <span data-lang="es">Por favor incluye tu correo o tel&eacute;fono para poder responderte.</span>
+      </div>
+      <div class="confirm-msg" id="message-success">
+        <span data-lang="en">Thanks &mdash; someone will contact you shortly.</span>
+        <span data-lang="es">Gracias &mdash; alguien se pondr&aacute; en contacto contigo pronto.</span>
+      </div>
+      <div class="confirm-msg" id="message-error">
+        <span data-lang="en">Something went wrong sending your message. Please try again, or call us directly.</span>
+        <span data-lang="es">Hubo un problema al enviar tu mensaje. Por favor intenta de nuevo, o ll&aacute;manos directamente.</span>
+      </div>
+    </form>
+  </div>
+</section>
+
 <footer class="band">
   <div class="wrap">
     <div class="tag" data-lang="en">Browse properties below, or reach out &mdash; we&rsquo;re happy to help.</div>
@@ -711,6 +825,61 @@ document.getElementById('apply-form').addEventListener('submit', function(e){
   });
 });
 
+/* ---------- "Message us" form ---------- */
+function showMessageResult(kind){
+  document.getElementById('message-error-contact').classList.toggle('show', kind === 'missing-contact');
+  document.getElementById('message-success').classList.toggle('show', kind === 'success');
+  document.getElementById('message-error').classList.toggle('show', kind === 'error');
+}
+
+document.getElementById('message-form').addEventListener('submit', function(e){
+  e.preventDefault();
+  var form = e.target;
+  var formData = new FormData(form);
+
+  if (formData.get('botcheck')) { return; }
+
+  var email = (formData.get('email') || '').trim();
+  var phone = (formData.get('phone') || '').trim();
+
+  if (!email && !phone) {
+    showMessageResult('missing-contact');
+    return;
+  }
+
+  var data = Object.fromEntries(formData.entries());
+
+  var submitBtn = form.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  showMessageResult(null);
+
+  var payload = Object.assign({
+    access_key: WEB3FORMS_ACCESS_KEY,
+    subject: 'New Website Message' + (data.name ? ' \u2014 ' + data.name : ''),
+    from_name: 'The Cres Group Website'
+  }, data);
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(result){
+    submitBtn.disabled = false;
+    if (result.success) {
+      showMessageResult('success');
+      form.reset();
+    } else {
+      showMessageResult('error');
+    }
+  })
+  .catch(function(){
+    submitBtn.disabled = false;
+    showMessageResult('error');
+  });
+});
+
 /* ---------- Property galleries & lightbox ---------- */
 var galleries = {
   rosalee: [
@@ -723,6 +892,13 @@ var galleries = {
     'Rentals/Rosalee/Apt%203/bath.jpg',
     'Rentals/Rosalee/Apt%203/bath2.jpg',
     'Rentals/Rosalee/Apt%203/HVAC.jpg'
+  ],
+  milpaverde: [
+    'Rentals/MilpaVerde/Front-Milpa4.jpg',
+    'Rentals/MilpaVerde/Kitchen_Milpa_4.jpg',
+    'Rentals/MilpaVerde/Bath-Milpa4.jpg',
+    'Rentals/MilpaVerde/Bed2-Millpa4.jpg',
+    'Rentals/MilpaVerde/Bedroom1-Milpa4.jpg'
   ]
 };
 var lightboxState = { gallery: null, index: 0 };
