@@ -212,9 +212,12 @@
   .submit-row{ display:flex; align-items:center; gap:16px; margin-top:8px; }
   .confirm-msg{
     display:none; margin-top:20px; padding:16px 18px;
-    background:var(--teal); color:var(--paper); border-radius:10px; font-size:14.5px;
+    color:var(--paper); border-radius:10px; font-size:14.5px;
   }
   .confirm-msg.show{ display:block; }
+  #confirm-success{ background:var(--teal); }
+  #confirm-error{ background:var(--clay); }
+  .apply-form button[disabled]{ opacity:0.6; cursor:not-allowed; }
 
   /* ---------- Properties section ---------- */
   .properties-section{ padding:64px 0 72px; background:var(--paper-2); scroll-margin-top:24px; }
@@ -478,6 +481,7 @@
     </div>
 
     <form class="apply-form" id="apply-form">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
       <fieldset>
         <legend data-lang="en">Applicant information</legend>
         <legend data-lang="es">Informaci&oacute;n del solicitante</legend>
@@ -581,9 +585,13 @@
         </button>
       </div>
 
-      <div class="confirm-msg" id="confirm-msg">
-        <span data-lang="en">Thanks &mdash; your application details are ready to send. (This demo form isn&rsquo;t yet connected to an inbox or database &mdash; see the note below.)</span>
-        <span data-lang="es">Gracias &mdash; los datos de tu solicitud est&aacute;n listos para enviarse. (Este formulario de demostraci&oacute;n a&uacute;n no est&aacute; conectado a un correo o base de datos &mdash; ver la nota abajo.)</span>
+      <div class="confirm-msg" id="confirm-success">
+        <span data-lang="en">Thanks &mdash; your application has been sent to our team, and we&rsquo;ll be in touch soon. A copy has also downloaded to your device for your records.</span>
+        <span data-lang="es">Gracias &mdash; tu solicitud fue enviada a nuestro equipo, y nos pondremos en contacto pronto. Tambi&eacute;n se descarg&oacute; una copia a tu dispositivo para tus registros.</span>
+      </div>
+      <div class="confirm-msg" id="confirm-error">
+        <span data-lang="en">Something went wrong sending your application. Please try again, or call us directly.</span>
+        <span data-lang="es">Hubo un problema al enviar tu solicitud. Por favor intenta de nuevo, o ll&aacute;manos directamente.</span>
       </div>
     </form>
   </div>
@@ -612,9 +620,94 @@ function setLang(lang){
 }
 setLang('en');
 
+/* ---------- Application form: Word download + email via Web3Forms ---------- */
+var WEB3FORMS_ACCESS_KEY = 'bc02cf0b-0519-4651-9df0-8a0e96103974';
+
+function downloadApplicationDoc(data){
+  var fields = [
+    ['Full name', data.full_name],
+    ['Phone', data.phone],
+    ['Email', data.email],
+    ['Current address', data.current_address],
+    ['Number of occupants', data.occupants],
+    ['Pets', data.pets === 'yes' ? 'Yes' : 'No'],
+    ['Property or area of interest', data.property_interest],
+    ['Desired move-in date', data.move_in_date],
+    ['Monthly budget', data.budget],
+    ['Employer', data.employer],
+    ['Monthly income', data.income],
+    ['Receives housing assistance', data.housing_assistance === 'Yes' ? 'Yes' : 'No'],
+    ['Notes', data.notes]
+  ];
+  var rowsHtml = fields.map(function(f){
+    var val = f[1] ? String(f[1]).replace(/&/g,'&amp;').replace(/</g,'&lt;') : '';
+    return '<tr>' +
+      '<td style="padding:6px 10px;border:1px solid #ccc;font-weight:bold;width:220px;">' + f[0] + '</td>' +
+      '<td style="padding:6px 10px;border:1px solid #ccc;">' + val + '</td>' +
+      '</tr>';
+  }).join('');
+  var html = '<html><head><meta charset="UTF-8"></head><body style="font-family:Calibri,Arial,sans-serif;">' +
+    '<h2>CRES Rentals &ndash; Rental Application</h2>' +
+    '<p>Submitted: ' + new Date().toLocaleString() + '</p>' +
+    '<table style="border-collapse:collapse;width:100%;">' + rowsHtml + '</table>' +
+    '</body></html>';
+  var blob = new Blob(['\ufeff', html], { type: 'application/msword' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  var safeName = (data.full_name || 'application').replace(/[^a-z0-9]+/gi, '-');
+  a.href = url;
+  a.download = 'CRES-Application-' + safeName + '.doc';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 3000);
+}
+
+function showApplyResult(kind){
+  document.getElementById('confirm-success').classList.toggle('show', kind === 'success');
+  document.getElementById('confirm-error').classList.toggle('show', kind === 'error');
+}
+
 document.getElementById('apply-form').addEventListener('submit', function(e){
   e.preventDefault();
-  document.getElementById('confirm-msg').classList.add('show');
+  var form = e.target;
+  var formData = new FormData(form);
+
+  if (formData.get('botcheck')) { return; }
+
+  var data = Object.fromEntries(formData.entries());
+  data.housing_assistance = formData.get('housing_assistance') ? 'Yes' : 'No';
+
+  var submitBtn = form.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  showApplyResult(null);
+
+  var payload = Object.assign({
+    access_key: WEB3FORMS_ACCESS_KEY,
+    subject: 'New Rental Application' + (data.full_name ? ' \u2014 ' + data.full_name : ''),
+    from_name: 'CRES Rentals Website'
+  }, data);
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  .then(function(res){ return res.json(); })
+  .then(function(result){
+    submitBtn.disabled = false;
+    if (result.success) {
+      downloadApplicationDoc(data);
+      showApplyResult('success');
+      form.reset();
+    } else {
+      showApplyResult('error');
+    }
+  })
+  .catch(function(){
+    submitBtn.disabled = false;
+    showApplyResult('error');
+  });
 });
 
 /* ---------- Property galleries & lightbox ---------- */
