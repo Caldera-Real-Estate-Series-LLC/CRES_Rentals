@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRES Rentals — Rio Grande Valley Houses & Apartments</title>
+<title>The Cres Group — Rio Grande Valley Houses & Apartments</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -41,8 +41,9 @@
   .logo{
     font-family:var(--font-display);
     font-weight:600;
-    font-size:22px;
+    font-size:19px;
     letter-spacing:0.01em;
+    white-space:nowrap;
   }
   nav{ display:flex; align-items:center; gap:28px; }
   nav a{
@@ -321,7 +322,7 @@
 
 <div class="wrap">
   <header>
-    <div class="logo">CRES</div>
+    <div class="logo">The Cres Group</div>
     <nav>
       <a href="#properties">
         <span data-lang="en">Properties</span>
@@ -356,11 +357,11 @@
     </div>
 
     <div class="lede" data-lang="en">
-      <p>At CRES, we believe finding a place to call home shouldn&rsquo;t be complicated or out of reach. We&rsquo;re a locally rooted rental company serving the Rio Grande Valley with quality houses and apartments at prices that make sense for real families and real budgets.</p>
+      <p>At The Cres Group, we believe finding a place to call home shouldn&rsquo;t be complicated or out of reach. We&rsquo;re a locally rooted rental company serving the Rio Grande Valley with quality houses and apartments at prices that make sense for real families and real budgets.</p>
       <p>We&rsquo;re proud to support our gente across the Valley &mdash; everyone is welcome to apply, with no application fee, ever. Housing assistance and Section 8 tenants are always welcome here. Whether you&rsquo;re just starting out, growing your family, or looking for a fresh start, our team is here to make the process simple, honest, and fast.</p>
     </div>
     <div class="lede" data-lang="es">
-      <p>En CRES, creemos que encontrar un lugar para llamar hogar no debe ser complicado ni estar fuera de tu alcance. Somos una compa&ntilde;&iacute;a de renta local que sirve al Valle del R&iacute;o Grande con casas y apartamentos de calidad, a precios que tienen sentido para familias y presupuestos reales.</p>
+      <p>En The Cres Group, creemos que encontrar un lugar para llamar hogar no debe ser complicado ni estar fuera de tu alcance. Somos una compa&ntilde;&iacute;a de renta local que sirve al Valle del R&iacute;o Grande con casas y apartamentos de calidad, a precios que tienen sentido para familias y presupuestos reales.</p>
       <p>Nos enorgullece apoyar a nuestra gente en toda la regi&oacute;n &mdash; todos son bienvenidos a aplicar, sin costo de solicitud, nunca. Los inquilinos con asistencia de vivienda y Secci&oacute;n 8 siempre son bienvenidos aqu&iacute;. Ya sea que est&eacute;s comenzando de nuevo, formando tu familia, o buscando un nuevo comienzo, nuestro equipo est&aacute; aqu&iacute; para hacer el proceso simple, honesto y r&aacute;pido.</p>
     </div>
 
@@ -601,8 +602,8 @@
   <div class="wrap">
     <div class="tag" data-lang="en">Browse properties below, or reach out &mdash; we&rsquo;re happy to help.</div>
     <div class="tag" data-lang="es">Explora las propiedades abajo, o cont&aacute;ctanos &mdash; con gusto te ayudamos.</div>
-    <p data-lang="en">CRES follows Fair Housing guidelines. Equal opportunity in every home we rent.</p>
-    <p data-lang="es">CRES sigue las normas de Vivienda Justa. Igualdad de oportunidades en cada casa que rentamos.</p>
+    <p data-lang="en">The Cres Group follows Fair Housing guidelines. Equal opportunity in every home we rent.</p>
+    <p data-lang="es">The Cres Group sigue las normas de Vivienda Justa. Igualdad de oportunidades en cada casa que rentamos.</p>
   </div>
 </footer>
 
@@ -647,7 +648,7 @@ function downloadApplicationDoc(data){
       '</tr>';
   }).join('');
   var html = '<html><head><meta charset="UTF-8"></head><body style="font-family:Calibri,Arial,sans-serif;">' +
-    '<h2>CRES Rentals &ndash; Rental Application</h2>' +
+    '<h2>The Cres Group &ndash; Rental Application</h2>' +
     '<p>Submitted: ' + new Date().toLocaleString() + '</p>' +
     '<table style="border-collapse:collapse;width:100%;">' + rowsHtml + '</table>' +
     '</body></html>';
@@ -656,7 +657,7 @@ function downloadApplicationDoc(data){
   var a = document.createElement('a');
   var safeName = (data.full_name || 'application').replace(/[^a-z0-9]+/gi, '-');
   a.href = url;
-  a.download = 'CRES-Application-' + safeName + '.doc';
+  a.download = 'TheCresGroup-Application-' + safeName + '.doc';
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -685,7 +686,7 @@ document.getElementById('apply-form').addEventListener('submit', function(e){
   var payload = Object.assign({
     access_key: WEB3FORMS_ACCESS_KEY,
     subject: 'New Rental Application' + (data.full_name ? ' \u2014 ' + data.full_name : ''),
-    from_name: 'CRES Rentals Website'
+    from_name: 'The Cres Group Website'
   }, data);
 
   fetch('https://api.web3forms.com/submit', {
