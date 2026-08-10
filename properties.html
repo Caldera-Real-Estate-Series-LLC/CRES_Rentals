@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Available Homes — The Cres Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><a href="index.html">The Cres Group</a></div>
+    <nav>
+      <a href="properties.html" class="current">
+        <span data-lang="en">Available</span>
+        <span data-lang="es">Disponibles</span>
+      </a>
+      <a href="coming-soon.html">
+        <span data-lang="en">Coming Soon</span>
+        <span data-lang="es">Pr&oacute;ximamente</span>
+      </a>
+      <a href="apply.html">
+        <span data-lang="en">Apply</span>
+        <span data-lang="es">Aplicar</span>
+      </a>
+      <a href="about.html">
+        <span data-lang="en">About Us</span>
+        <span data-lang="es">Sobre Nosotros</span>
+      </a>
+      <a href="contact.html">
+        <span data-lang="en">Contact</span>
+        <span data-lang="es">Contacto</span>
+      </a>
+      <div class="lang-toggle">
+        <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+        <button id="btn-es" onclick="setLang('es')">ES</button>
+      </div>
+    </nav>
+  </header>
+</div>
+<section class="properties-section" id="properties">
+  <div class="wrap">
+    <div class="properties-intro">
+      <span class="eyebrow" data-lang="en">Available now</span>
+      <span class="eyebrow" data-lang="es">Disponible ahora</span>
+      <h2 class="properties-title" data-lang="en">Find your next home in the Valley</h2>
+      <h2 class="properties-title" data-lang="es">Encuentra tu pr&oacute;ximo hogar en el Valle</h2>
+      <p class="properties-sub" data-lang="en">More listings are on the way &mdash; here&rsquo;s what&rsquo;s open right now.</p>
+      <p class="properties-sub" data-lang="es">Pronto habr&aacute; m&aacute;s propiedades &mdash; esto es lo que est&aacute; disponible ahora.</p>
+    </div>
+
+    <div class="property-card">
+      <div class="property-gallery">
+        <img class="property-main-photo" id="rosalee-main" src="Rentals/Rosalee/Apt%203/FrontRosalee.jpg" alt="2637 Rosalee Ave" onclick="openLightbox('rosalee', 0)">
+        <div class="property-thumbs">
+          <img src="Rentals/Rosalee/Apt%203/FrontRosalee.jpg" alt="Front of building" onclick="setMainPhoto('rosalee', 0)">
+          <img src="Rentals/Rosalee/Apt%203/LivingRoom.jpg" alt="Living room" onclick="setMainPhoto('rosalee', 1)">
+          <img src="Rentals/Rosalee/Apt%203/kitchen.jpg" alt="Kitchen" onclick="setMainPhoto('rosalee', 2)">
+          <img src="Rentals/Rosalee/Apt%203/Room.jpg" alt="Bedroom" onclick="setMainPhoto('rosalee', 3)">
+          <img src="Rentals/Rosalee/Apt%203/room1.jpg" alt="Bedroom" onclick="setMainPhoto('rosalee', 4)">
+          <img src="Rentals/Rosalee/Apt%203/Room2.jpg" alt="Bedroom closet" onclick="setMainPhoto('rosalee', 5)">
+          <img src="Rentals/Rosalee/Apt%203/bath.jpg" alt="Bathroom" onclick="setMainPhoto('rosalee', 6)">
+          <img src="Rentals/Rosalee/Apt%203/bath2.jpg" alt="Bathroom sink" onclick="setMainPhoto('rosalee', 7)">
+          <img src="Rentals/Rosalee/Apt%203/HVAC.jpg" alt="Central AC unit" onclick="setMainPhoto('rosalee', 8)">
+        </div>
+      </div>
+
+      <div class="property-body">
+        <div class="property-top">
+          <h3 class="property-address">2637 Rosalee Ave</h3>
+          <span class="property-status" data-lang="en">Available now</span>
+          <span class="property-status" data-lang="es">Disponible ahora</span>
+        </div>
+        <p class="property-price" data-lang="en">$865/month <span>&middot; $760 deposit</span></p>
+        <p class="property-price" data-lang="es">$865/mes <span>&middot; $760 de dep&oacute;sito</span></p>
+
+        <div class="property-specs">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 10v9M21 10v9M3 14h18M5 14V7a2 2 0 012-2h3a2 2 0 012 2v1M12 8v1h7a2 2 0 012 2v3"/></svg>2 <span data-lang="en">bed</span><span data-lang="es">rec&aacute;maras</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 12h16M6 12V5a1 1 0 011-1h2a1 1 0 011 1v2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg>1 <span data-lang="en">bath</span><span data-lang="es">ba&ntilde;o</span></div>
+          <div><span data-lang="en">Upstairs unit</span><span data-lang="es">Unidad de arriba</span></div>
+        </div>
+
+        <p class="property-desc" data-lang="en">A bright, second-floor two-bedroom apartment with central AC, hookups for a washer and dryer, and a stove and refrigerator included. Small, trained pets are welcome, and housing assistance is welcome. Maximum 4 occupants and 2 vehicles.</p>
+        <p class="property-desc" data-lang="es">Un luminoso apartamento de dos rec&aacute;maras en el segundo piso, con aire acondicionado central, conexiones para lavadora y secadora, y estufa y refrigerador incluidos. Se aceptan mascotas peque&ntilde;as y entrenadas, y se acepta asistencia de vivienda. M&aacute;ximo 4 personas y 2 veh&iacute;culos.</p>
+
+        <p class="property-contact" data-lang="en">Call Silvia at <a href="tel:6156369909">(615) 636-9909</a></p>
+        <p class="property-contact" data-lang="es">Llama a Silvia al <a href="tel:6156369909">(615) 636-9909</a></p>
+
+        <a href="apply.html" class="btn btn-primary">
+          <span data-lang="en">Apply for this home</span>
+          <span data-lang="es">Aplica para esta casa</span>
+        </a>
+        <a href="contact.html" class="btn btn-secondary" style="margin-left:10px;">
+          <span data-lang="en">Message us about this home</span>
+          <span data-lang="es">Env&iacute;anos un mensaje sobre esta casa</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="property-card">
+      <div class="property-gallery">
+        <img class="property-main-photo" id="milpaverde-main" src="Rentals/MilpaVerde/Front-Milpa4.jpg" alt="464 Calle Milpa Verde St" onclick="openLightbox('milpaverde', 0)">
+        <div class="property-thumbs">
+          <img src="Rentals/MilpaVerde/Front-Milpa4.jpg" alt="Front of building" onclick="setMainPhoto('milpaverde', 0)">
+          <img src="Rentals/MilpaVerde/Kitchen_Milpa_4.jpg" alt="Kitchen" onclick="setMainPhoto('milpaverde', 1)">
+          <img src="Rentals/MilpaVerde/Bath-Milpa4.jpg" alt="Bathroom" onclick="setMainPhoto('milpaverde', 2)">
+          <img src="Rentals/MilpaVerde/Bed2-Millpa4.jpg" alt="Bedroom" onclick="setMainPhoto('milpaverde', 3)">
+          <img src="Rentals/MilpaVerde/Bedroom1-Milpa4.jpg" alt="Bedroom" onclick="setMainPhoto('milpaverde', 4)">
+        </div>
+      </div>
+
+      <div class="property-body">
+        <div class="property-top">
+          <h3 class="property-address">464 Calle Milpa Verde St</h3>
+          <span class="property-status" data-lang="en">Available now</span>
+          <span class="property-status" data-lang="es">Disponible ahora</span>
+        </div>
+        <p class="property-price" data-lang="en">$750/month <span>&middot; $570 deposit</span></p>
+        <p class="property-price" data-lang="es">$750/mes <span>&middot; $570 de dep&oacute;sito</span></p>
+
+        <div class="property-specs">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 10v9M21 10v9M3 14h18M5 14V7a2 2 0 012-2h3a2 2 0 012 2v1M12 8v1h7a2 2 0 012 2v3"/></svg>2 <span data-lang="en">bed</span><span data-lang="es">rec&aacute;maras</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 12h16M6 12V5a1 1 0 011-1h2a1 1 0 011 1v2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg>1 <span data-lang="en">bath</span><span data-lang="es">ba&ntilde;o</span></div>
+          <div><span data-lang="en">Parking for 1 vehicle</span><span data-lang="es">Estacionamiento para 1 veh&iacute;culo</span></div>
+        </div>
+
+        <p class="property-desc" data-lang="en">A newly remodeled two-bedroom, one-bath apartment with a mini-split central air system, brand-new flooring, and a fully renovated bathroom. Water and sewage are included. Small, trained pets are welcome, and housing assistance is welcome. Available now on a 12-month lease. Please note: there are no washer/dryer hookups.</p>
+        <p class="property-desc" data-lang="es">Un apartamento de dos rec&aacute;maras y un ba&ntilde;o reci&eacute;n remodelado, con aire acondicionado tipo mini-split, piso nuevo y ba&ntilde;o completamente renovado. Incluye agua y drenaje. Se aceptan mascotas peque&ntilde;as y entrenadas, y se acepta asistencia de vivienda. Disponible ya, con contrato de 12 meses. Nota: no hay conexi&oacute;n para lavadora ni secadora.</p>
+
+        <p class="property-contact" data-lang="en">Call Silvia at <a href="tel:6156369909">(615) 636-9909</a></p>
+        <p class="property-contact" data-lang="es">Llama a Silvia al <a href="tel:6156369909">(615) 636-9909</a></p>
+
+        <a href="apply.html" class="btn btn-primary">
+          <span data-lang="en">Apply for this home</span>
+          <span data-lang="es">Aplica para esta casa</span>
+        </a>
+        <a href="contact.html" class="btn btn-secondary" style="margin-left:10px;">
+          <span data-lang="en">Message us about this home</span>
+          <span data-lang="es">Env&iacute;anos un mensaje sobre esta casa</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="if(event.target===this) closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-prev" onclick="stepLightbox(-1)">&#8249;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-next" onclick="stepLightbox(1)">&#8250;</button>
+</div>
+<footer class="band">
+  <div class="wrap">
+    <div class="tag" data-lang="en">Browse our available homes, or reach out &mdash; we&rsquo;re happy to help.</div>
+    <div class="tag" data-lang="es">Explora nuestras casas disponibles, o cont&aacute;ctanos &mdash; con gusto te ayudamos.</div>
+    <p data-lang="en">The Cres Group follows Fair Housing guidelines. Equal opportunity in every home we rent.</p>
+    <p data-lang="es">The Cres Group sigue las normas de Vivienda Justa. Igualdad de oportunidades en cada casa que rentamos.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

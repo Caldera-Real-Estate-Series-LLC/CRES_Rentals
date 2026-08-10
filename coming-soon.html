@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon — The Cres Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><a href="index.html">The Cres Group</a></div>
+    <nav>
+      <a href="properties.html">
+        <span data-lang="en">Available</span>
+        <span data-lang="es">Disponibles</span>
+      </a>
+      <a href="coming-soon.html" class="current">
+        <span data-lang="en">Coming Soon</span>
+        <span data-lang="es">Pr&oacute;ximamente</span>
+      </a>
+      <a href="apply.html">
+        <span data-lang="en">Apply</span>
+        <span data-lang="es">Aplicar</span>
+      </a>
+      <a href="about.html">
+        <span data-lang="en">About Us</span>
+        <span data-lang="es">Sobre Nosotros</span>
+      </a>
+      <a href="contact.html">
+        <span data-lang="en">Contact</span>
+        <span data-lang="es">Contacto</span>
+      </a>
+      <div class="lang-toggle">
+        <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+        <button id="btn-es" onclick="setLang('es')">ES</button>
+      </div>
+    </nav>
+  </header>
+</div>
+<section class="properties-section" id="coming-soon">
+  <div class="wrap">
+    <div class="properties-intro">
+      <span class="eyebrow" data-lang="en">Coming soon</span>
+      <span class="eyebrow" data-lang="es">Pr&oacute;ximamente</span>
+      <h2 class="properties-title" data-lang="en">More homes on the way</h2>
+      <h2 class="properties-title" data-lang="es">M&aacute;s casas en camino</h2>
+      <p class="properties-sub" data-lang="en">Not available quite yet &mdash; reach out now to be first in line.</p>
+      <p class="properties-sub" data-lang="es">A&uacute;n no disponible &mdash; cont&aacute;ctanos ahora para ser el primero en la fila.</p>
+    </div>
+
+    <div class="property-card">
+      <div class="property-gallery">
+        <img class="property-main-photo" id="elvalle-main" src="Rentals/ElValle/KitechEV1.jpg" alt="324 El Valle Dr" onclick="openLightbox('elvalle', 0)">
+        <div class="property-thumbs">
+          <img src="Rentals/ElValle/KitechEV1.jpg" alt="Kitchen" onclick="setMainPhoto('elvalle', 0)">
+          <img src="Rentals/ElValle/LinvinfELV1.jpg" alt="Living room" onclick="setMainPhoto('elvalle', 1)">
+          <img src="Rentals/ElValle/Bed.jpg" alt="Bedroom" onclick="setMainPhoto('elvalle', 2)">
+          <img src="Rentals/ElValle/ClosetELV1.jpg" alt="Closet" onclick="setMainPhoto('elvalle', 3)">
+          <img src="Rentals/ElValle/Bath.jpg" alt="Bathroom" onclick="setMainPhoto('elvalle', 4)">
+          <img src="Rentals/ElValle/Bath2.jpg" alt="Bathroom sink" onclick="setMainPhoto('elvalle', 5)">
+        </div>
+      </div>
+
+      <div class="property-body">
+        <div class="property-top">
+          <h3 class="property-address">324 El Valle Dr</h3>
+          <span class="property-status upcoming" data-lang="en">Available October</span>
+          <span class="property-status upcoming" data-lang="es">Disponible en octubre</span>
+        </div>
+        <p class="property-price" data-lang="en">$600/month <span>&middot; $550 deposit</span></p>
+        <p class="property-price" data-lang="es">$600/mes <span>&middot; $550 de dep&oacute;sito</span></p>
+
+        <div class="property-specs">
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 10v9M21 10v9M3 14h18M5 14V7a2 2 0 012-2h3a2 2 0 012 2v1M12 8v1h7a2 2 0 012 2v3"/></svg>1 <span data-lang="en">bed</span><span data-lang="es">rec&aacute;mara</span></div>
+          <div><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 12h16M6 12V5a1 1 0 011-1h2a1 1 0 011 1v2M4 12v6a2 2 0 002 2h12a2 2 0 002-2v-6"/></svg>1 <span data-lang="en">bath</span><span data-lang="es">ba&ntilde;o</span></div>
+          <div><span data-lang="en">Duplex</span><span data-lang="es">D&uacute;plex</span></div>
+        </div>
+
+        <p class="property-desc" data-lang="en">A newly remodeled one-bedroom, one-bath duplex with a mini-split central air system. Refrigerator and stove are included, with parking available. Pet friendly, and housing assistance is welcome. This home is currently occupied &mdash; please call Silvia to schedule an appointment rather than visiting in person. Please note: there are no washer/dryer hookups.</p>
+        <p class="property-desc" data-lang="es">Un d&uacute;plex de una rec&aacute;mara y un ba&ntilde;o, reci&eacute;n remodelado, con aire acondicionado tipo mini-split. Incluye refrigerador y estufa, con estacionamiento disponible. Se aceptan mascotas, y se acepta asistencia de vivienda. Esta casa est&aacute; actualmente ocupada &mdash; por favor llama a Silvia para programar una cita en lugar de visitar en persona. Nota: no hay conexi&oacute;n para lavadora ni secadora.</p>
+
+        <p class="property-contact" data-lang="en">Call Silvia at <a href="tel:6156369909">(615) 636-9909</a></p>
+        <p class="property-contact" data-lang="es">Llama a Silvia al <a href="tel:6156369909">(615) 636-9909</a></p>
+
+        <a href="apply.html" class="btn btn-primary">
+          <span data-lang="en">Apply for this home</span>
+          <span data-lang="es">Aplica para esta casa</span>
+        </a>
+        <a href="contact.html" class="btn btn-secondary" style="margin-left:10px;">
+          <span data-lang="en">Message us about this home</span>
+          <span data-lang="es">Env&iacute;anos un mensaje sobre esta casa</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="if(event.target===this) closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-prev" onclick="stepLightbox(-1)">&#8249;</button>
+  <img id="lightbox-img" src="" alt="">
+  <button class="lightbox-next" onclick="stepLightbox(1)">&#8250;</button>
+</div>
+<footer class="band">
+  <div class="wrap">
+    <div class="tag" data-lang="en">Browse our available homes, or reach out &mdash; we&rsquo;re happy to help.</div>
+    <div class="tag" data-lang="es">Explora nuestras casas disponibles, o cont&aacute;ctanos &mdash; con gusto te ayudamos.</div>
+    <p data-lang="en">The Cres Group follows Fair Housing guidelines. Equal opportunity in every home we rent.</p>
+    <p data-lang="es">The Cres Group sigue las normas de Vivienda Justa. Igualdad de oportunidades en cada casa que rentamos.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

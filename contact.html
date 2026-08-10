@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — The Cres Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><a href="index.html">The Cres Group</a></div>
+    <nav>
+      <a href="properties.html">
+        <span data-lang="en">Available</span>
+        <span data-lang="es">Disponibles</span>
+      </a>
+      <a href="coming-soon.html">
+        <span data-lang="en">Coming Soon</span>
+        <span data-lang="es">Pr&oacute;ximamente</span>
+      </a>
+      <a href="apply.html">
+        <span data-lang="en">Apply</span>
+        <span data-lang="es">Aplicar</span>
+      </a>
+      <a href="about.html">
+        <span data-lang="en">About Us</span>
+        <span data-lang="es">Sobre Nosotros</span>
+      </a>
+      <a href="contact.html" class="current">
+        <span data-lang="en">Contact</span>
+        <span data-lang="es">Contacto</span>
+      </a>
+      <div class="lang-toggle">
+        <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+        <button id="btn-es" onclick="setLang('es')">ES</button>
+      </div>
+    </nav>
+  </header>
+</div>
+<section class="apply-section" id="message">
+  <div class="wrap">
+    <div class="apply-intro">
+      <span class="eyebrow" data-lang="en">Questions?</span>
+      <span class="eyebrow" data-lang="es">&iquest;Preguntas?</span>
+
+      <h2 class="apply-title" data-lang="en">Message us</h2>
+      <h2 class="apply-title" data-lang="es">Env&iacute;anos un mensaje</h2>
+
+      <p class="apply-sub" data-lang="en">Send us a message and someone will contact you shortly. Please include your email or phone number so we can reach you back.</p>
+      <p class="apply-sub" data-lang="es">Env&iacute;anos un mensaje y alguien se pondr&aacute; en contacto contigo pronto. Por favor incluye tu correo electr&oacute;nico o n&uacute;mero de tel&eacute;fono para poder responderte.</p>
+    </div>
+
+    <form class="apply-form" id="message-form" style="max-width:520px;">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="form-field">
+        <label data-lang="en">Name</label>
+        <label data-lang="es">Nombre</label>
+        <input type="text" name="name" placeholder="Optional">
+      </div>
+      <div class="form-field">
+        <label data-lang="en">Email</label>
+        <label data-lang="es">Correo electr&oacute;nico</label>
+        <input type="email" name="email" id="message-email">
+      </div>
+      <div class="form-field">
+        <label data-lang="en">Phone number</label>
+        <label data-lang="es">N&uacute;mero de tel&eacute;fono</label>
+        <input type="tel" name="phone" id="message-phone">
+      </div>
+      <p class="hint" id="message-contact-hint" data-lang="en" style="margin:-8px 0 16px;">Please fill in at least one of email or phone.</p>
+      <p class="hint" id="message-contact-hint-es" data-lang="es" style="margin:-8px 0 16px;">Por favor completa al menos uno: correo o tel&eacute;fono.</p>
+
+      <div class="form-field">
+        <label data-lang="en">Message</label>
+        <label data-lang="es">Mensaje</label>
+        <textarea name="message" required></textarea>
+      </div>
+
+      <div class="submit-row">
+        <button type="submit" class="btn btn-primary">
+          <span data-lang="en">Send message</span>
+          <span data-lang="es">Enviar mensaje</span>
+        </button>
+      </div>
+
+      <div class="confirm-msg" id="message-error-contact">
+        <span data-lang="en">Please include your email or phone number so we can get back to you.</span>
+        <span data-lang="es">Por favor incluye tu correo o tel&eacute;fono para poder responderte.</span>
+      </div>
+      <div class="confirm-msg" id="message-success">
+        <span data-lang="en">Thanks &mdash; someone will contact you shortly.</span>
+        <span data-lang="es">Gracias &mdash; alguien se pondr&aacute; en contacto contigo pronto.</span>
+      </div>
+      <div class="confirm-msg" id="message-error">
+        <span data-lang="en">Something went wrong sending your message. Please try again, or call us directly.</span>
+        <span data-lang="es">Hubo un problema al enviar tu mensaje. Por favor intenta de nuevo, o ll&aacute;manos directamente.</span>
+      </div>
+    </form>
+  </div>
+</section>
+<footer class="band">
+  <div class="wrap">
+    <div class="tag" data-lang="en">Browse our available homes, or reach out &mdash; we&rsquo;re happy to help.</div>
+    <div class="tag" data-lang="es">Explora nuestras casas disponibles, o cont&aacute;ctanos &mdash; con gusto te ayudamos.</div>
+    <p data-lang="en">The Cres Group follows Fair Housing guidelines. Equal opportunity in every home we rent.</p>
+    <p data-lang="es">The Cres Group sigue las normas de Vivienda Justa. Igualdad de oportunidades en cada casa que rentamos.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

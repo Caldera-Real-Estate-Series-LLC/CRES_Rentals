@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply — The Cres Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><a href="index.html">The Cres Group</a></div>
+    <nav>
+      <a href="properties.html">
+        <span data-lang="en">Available</span>
+        <span data-lang="es">Disponibles</span>
+      </a>
+      <a href="coming-soon.html">
+        <span data-lang="en">Coming Soon</span>
+        <span data-lang="es">Pr&oacute;ximamente</span>
+      </a>
+      <a href="apply.html" class="current">
+        <span data-lang="en">Apply</span>
+        <span data-lang="es">Aplicar</span>
+      </a>
+      <a href="about.html">
+        <span data-lang="en">About Us</span>
+        <span data-lang="es">Sobre Nosotros</span>
+      </a>
+      <a href="contact.html">
+        <span data-lang="en">Contact</span>
+        <span data-lang="es">Contacto</span>
+      </a>
+      <div class="lang-toggle">
+        <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+        <button id="btn-es" onclick="setLang('es')">ES</button>
+      </div>
+    </nav>
+  </header>
+</div>
+<section class="apply-section" id="apply">
+  <div class="wrap">
+    <div class="apply-intro">
+      <span class="eyebrow" data-lang="en">No application fee</span>
+      <span class="eyebrow" data-lang="es">Sin costo de solicitud</span>
+
+      <h2 class="apply-title" data-lang="en">Rental application</h2>
+      <h2 class="apply-title" data-lang="es">Solicitud de renta</h2>
+
+      <p class="apply-sub" data-lang="en">Fill out the form below and our team will reach out. Housing assistance and Section 8 tenants are always welcome &mdash; there&rsquo;s no fee to apply.</p>
+      <p class="apply-sub" data-lang="es">Completa el siguiente formulario y nuestro equipo se pondr&aacute;a en contacto contigo. Los inquilinos con asistencia de vivienda y Secci&oacute;n 8 siempre son bienvenidos &mdash; no hay costo por aplicar.</p>
+
+      <p class="apply-note" data-lang="en">For your security, please don&rsquo;t include your Social Security number here. If it&rsquo;s needed later in the process, we&rsquo;ll collect it through a secure, separate step.</p>
+      <p class="apply-note" data-lang="es">Por tu seguridad, por favor no incluyas tu n&uacute;mero de Seguro Social aqu&iacute;. Si se necesita m&aacute;s adelante en el proceso, lo solicitaremos por un paso separado y seguro.</p>
+    </div>
+
+    <form class="apply-form" id="apply-form">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <fieldset>
+        <legend data-lang="en">Applicant information</legend>
+        <legend data-lang="es">Informaci&oacute;n del solicitante</legend>
+        <div class="form-grid">
+          <div class="form-field">
+            <label data-lang="en">Full name</label>
+            <label data-lang="es">Nombre completo</label>
+            <input type="text" name="full_name" required>
+          </div>
+          <div class="form-field">
+            <label data-lang="en">Phone number</label>
+            <label data-lang="es">N&uacute;mero de tel&eacute;fono</label>
+            <input type="tel" name="phone" required>
+          </div>
+          <div class="form-field full">
+            <label data-lang="en">Email</label>
+            <label data-lang="es">Correo electr&oacute;nico</label>
+            <input type="email" name="email" required>
+          </div>
+          <div class="form-field full">
+            <label data-lang="en">Current address</label>
+            <label data-lang="es">Direcci&oacute;n actual</label>
+            <input type="text" name="current_address" required>
+          </div>
+          <div class="form-field">
+            <label data-lang="en">Number of occupants</label>
+            <label data-lang="es">N&uacute;mero de ocupantes</label>
+            <input type="number" name="occupants" min="1" required>
+          </div>
+          <div class="form-field">
+            <label data-lang="en">Do you have pets?</label>
+            <label data-lang="es">&iquest;Tienes mascotas?</label>
+            <select name="pets" id="pets-select" required>
+              <option value="no" data-en="No" data-es="No">No</option>
+              <option value="yes" data-en="Yes" data-es="S&iacute;">Yes</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-lang="en">What you&rsquo;re looking for</legend>
+        <legend data-lang="es">Lo que est&aacute;s buscando</legend>
+        <div class="form-grid">
+          <div class="form-field full">
+            <label data-lang="en">Property or area of interest</label>
+            <label data-lang="es">Propiedad o &aacute;rea de inter&eacute;s</label>
+            <input type="text" name="property_interest" required>
+          </div>
+          <div class="form-field">
+            <label data-lang="en">Desired move-in date</label>
+            <label data-lang="es">Fecha deseada de mudanza</label>
+            <input type="date" name="move_in_date" required>
+          </div>
+          <div class="form-field">
+            <label data-lang="en">Current monthly rent payment</label>
+            <label data-lang="es">Pago de renta mensual actual</label>
+            <input type="text" name="current_rent" placeholder="$" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-lang="en">Employment and income</legend>
+        <legend data-lang="es">Empleo e ingresos</legend>
+        <div class="form-grid">
+          <div class="form-field">
+            <label data-lang="en">Employer</label>
+            <label data-lang="es">Empleador</label>
+            <input type="text" name="employer" required>
+          </div>
+          <div class="form-field">
+            <label data-lang="en">Monthly income</label>
+            <label data-lang="es">Ingreso mensual</label>
+            <input type="text" name="income" placeholder="$" required>
+          </div>
+        </div>
+        <div class="checkbox-row" style="margin-top:4px;">
+          <input type="checkbox" id="assistance" name="housing_assistance">
+          <div>
+            <label for="assistance" data-lang="en">I receive Section 8 or another housing assistance voucher</label>
+            <label for="assistance" data-lang="es">Recibo Secci&oacute;n 8 u otro vale de asistencia de vivienda</label>
+            <div class="hint" data-lang="en">This never affects your eligibility to apply &mdash; all housing assistance is welcome.</div>
+            <div class="hint" data-lang="es">Esto nunca afecta tu elegibilidad para aplicar &mdash; toda asistencia de vivienda es bienvenida.</div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-lang="en">Anything else we should know</legend>
+        <legend data-lang="es">Algo m&aacute;s que debamos saber</legend>
+        <div class="form-field full">
+          <textarea name="notes" required></textarea>
+        </div>
+      </fieldset>
+
+      <div class="submit-row">
+        <button type="submit" class="btn btn-primary">
+          <span data-lang="en">Submit application</span>
+          <span data-lang="es">Enviar solicitud</span>
+        </button>
+      </div>
+
+      <div class="confirm-msg" id="confirm-success">
+        <span data-lang="en">Thanks &mdash; your application has been sent to our team, and we&rsquo;ll be in touch soon. A copy has also downloaded to your device for your records.</span>
+        <span data-lang="es">Gracias &mdash; tu solicitud fue enviada a nuestro equipo, y nos pondremos en contacto pronto. Tambi&eacute;n se descarg&oacute; una copia a tu dispositivo para tus registros.</span>
+      </div>
+      <div class="confirm-msg" id="confirm-error">
+        <span data-lang="en">Something went wrong sending your application. Please try again, or call us directly.</span>
+        <span data-lang="es">Hubo un problema al enviar tu solicitud. Por favor intenta de nuevo, o ll&aacute;manos directamente.</span>
+      </div>
+    </form>
+  </div>
+</section>
+<footer class="band">
+  <div class="wrap">
+    <div class="tag" data-lang="en">Browse our available homes, or reach out &mdash; we&rsquo;re happy to help.</div>
+    <div class="tag" data-lang="es">Explora nuestras casas disponibles, o cont&aacute;ctanos &mdash; con gusto te ayudamos.</div>
+    <p data-lang="en">The Cres Group follows Fair Housing guidelines. Equal opportunity in every home we rent.</p>
+    <p data-lang="es">The Cres Group sigue las normas de Vivienda Justa. Igualdad de oportunidades en cada casa que rentamos.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
