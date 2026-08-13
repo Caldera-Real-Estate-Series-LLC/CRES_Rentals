@@ -169,6 +169,52 @@ if (messageForm) {
   });
 }
 
+/* ---------- Property location maps (Leaflet + OpenStreetMap, no API key needed) ---------- */
+var propertyLocations = {
+  rosalee: { lat: 25.9269935, lng: -97.4796060, address: '2637 Rosalee Ave, Brownsville, TX' },
+  milpaverde: { lat: 25.8944979, lng: -97.4591151, address: '464 Calle Milpa Verde St, Brownsville, TX' },
+  sandyln: { lat: 25.9305999, lng: -97.4372080, address: '1115 Sandy Ln, Brownsville, TX' },
+  elvalle: { lat: 25.9211672, lng: -97.4371505, address: '324 El Valle Dr, Brownsville, TX' }
+};
+
+function initPropertyMaps(){
+  if (typeof L === 'undefined') return;
+  var MILES_2_IN_METERS = 3218.69;
+
+  Object.keys(propertyLocations).forEach(function(key){
+    var loc = propertyLocations[key];
+    var cityEl = document.getElementById('map-' + key + '-city');
+    var radiusEl = document.getElementById('map-' + key + '-radius');
+
+    if (cityEl) {
+      var cityMap = L.map(cityEl, { scrollWheelZoom: false, zoomControl: false }).setView([loc.lat, loc.lng], 12);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 19
+      }).addTo(cityMap);
+      L.marker([loc.lat, loc.lng]).addTo(cityMap).bindPopup(loc.address);
+    }
+
+    if (radiusEl) {
+      var radiusMap = L.map(radiusEl, { scrollWheelZoom: false, zoomControl: false }).setView([loc.lat, loc.lng], 13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 19
+      }).addTo(radiusMap);
+      L.marker([loc.lat, loc.lng]).addTo(radiusMap).bindPopup(loc.address);
+      var circle = L.circle([loc.lat, loc.lng], {
+        radius: MILES_2_IN_METERS,
+        color: '#B8492F',
+        fillColor: '#B8492F',
+        fillOpacity: 0.08,
+        weight: 2
+      }).addTo(radiusMap);
+      radiusMap.fitBounds(circle.getBounds());
+    }
+  });
+}
+initPropertyMaps();
+
 /* ---------- Property galleries & lightbox ---------- */
 var galleries = {
   rosalee: [

@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
 <body>
 <div class="wrap">
@@ -86,6 +87,19 @@
         <p class="property-desc" data-lang="en">A bright, second-floor two-bedroom apartment with central AC, hookups for a washer and dryer, and a stove and refrigerator included. Small, trained pets are welcome, and housing assistance is welcome. Maximum 4 occupants and 2 vehicles.</p>
         <p class="property-desc" data-lang="es">Un luminoso apartamento de dos rec&aacute;maras en el segundo piso, con aire acondicionado central, conexiones para lavadora y secadora, y estufa y refrigerador incluidos. Se aceptan mascotas peque&ntilde;as y entrenadas, y se acepta asistencia de vivienda. M&aacute;ximo 4 personas y 2 veh&iacute;culos.</p>
 
+        <div class="property-maps">
+          <div>
+            <div class="property-map-label" data-lang="en">Location in Brownsville</div>
+            <div class="property-map-label" data-lang="es">Ubicaci&oacute;n en Brownsville</div>
+            <div class="property-map" id="map-rosalee-city"></div>
+          </div>
+          <div>
+            <div class="property-map-label" data-lang="en">2-mile radius</div>
+            <div class="property-map-label" data-lang="es">Radio de 2 millas</div>
+            <div class="property-map" id="map-rosalee-radius"></div>
+          </div>
+        </div>
+
         <p class="property-contact" data-lang="en">Call Silvia at <a href="tel:6156369909">(615) 636-9909</a></p>
         <p class="property-contact" data-lang="es">Llama a Silvia al <a href="tel:6156369909">(615) 636-9909</a></p>
 
@@ -129,6 +143,19 @@
 
         <p class="property-desc" data-lang="en">A newly remodeled two-bedroom, one-bath apartment with a mini-split central air system, brand-new flooring, and a fully renovated bathroom. Water and sewage are included. Small, trained pets are welcome, and housing assistance is welcome. Available now on a 12-month lease. Please note: there are no washer/dryer hookups.</p>
         <p class="property-desc" data-lang="es">Un apartamento de dos rec&aacute;maras y un ba&ntilde;o reci&eacute;n remodelado, con aire acondicionado tipo mini-split, piso nuevo y ba&ntilde;o completamente renovado. Incluye agua y drenaje. Se aceptan mascotas peque&ntilde;as y entrenadas, y se acepta asistencia de vivienda. Disponible ya, con contrato de 12 meses. Nota: no hay conexi&oacute;n para lavadora ni secadora.</p>
+
+        <div class="property-maps">
+          <div>
+            <div class="property-map-label" data-lang="en">Location in Brownsville</div>
+            <div class="property-map-label" data-lang="es">Ubicaci&oacute;n en Brownsville</div>
+            <div class="property-map" id="map-milpaverde-city"></div>
+          </div>
+          <div>
+            <div class="property-map-label" data-lang="en">2-mile radius</div>
+            <div class="property-map-label" data-lang="es">Radio de 2 millas</div>
+            <div class="property-map" id="map-milpaverde-radius"></div>
+          </div>
+        </div>
 
         <p class="property-contact" data-lang="en">Call Silvia at <a href="tel:6156369909">(615) 636-9909</a></p>
         <p class="property-contact" data-lang="es">Llama a Silvia al <a href="tel:6156369909">(615) 636-9909</a></p>
@@ -184,6 +211,19 @@
         <p class="property-desc" data-lang="en">A spacious three-bedroom, two-bathroom house with central air conditioning, a fenced yard, and hookups for a washer and dryer. Stove and refrigerator are included. Pets are welcome, and housing assistance is welcome. Utilities are not included. Available August 20.</p>
         <p class="property-desc" data-lang="es">Una casa espaciosa de tres rec&aacute;maras y dos ba&ntilde;os, con aire acondicionado central, patio cercado, y conexiones para lavadora y secadora. Incluye estufa y refrigerador. Se aceptan mascotas, y se acepta asistencia de vivienda. No incluye servicios. Disponible el 20 de agosto.</p>
 
+        <div class="property-maps">
+          <div>
+            <div class="property-map-label" data-lang="en">Location in Brownsville</div>
+            <div class="property-map-label" data-lang="es">Ubicaci&oacute;n en Brownsville</div>
+            <div class="property-map" id="map-sandyln-city"></div>
+          </div>
+          <div>
+            <div class="property-map-label" data-lang="en">2-mile radius</div>
+            <div class="property-map-label" data-lang="es">Radio de 2 millas</div>
+            <div class="property-map" id="map-sandyln-radius"></div>
+          </div>
+        </div>
+
         <p class="property-contact" data-lang="en">Call Silvia at <a href="tel:6156369909">(615) 636-9909</a></p>
         <p class="property-contact" data-lang="es">Llama a Silvia al <a href="tel:6156369909">(615) 636-9909</a></p>
 
@@ -215,6 +255,7 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

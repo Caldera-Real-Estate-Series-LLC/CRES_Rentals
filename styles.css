@@ -266,6 +266,19 @@
   .property-specs svg{ width:16px; height:16px; stroke:var(--teal); flex-shrink:0; }
 
   .property-desc{ font-size:15px; opacity:0.92; margin:0 0 18px; max-width:60ch; }
+  .property-maps{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:0 0 18px; }
+  .property-map-label{
+    font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.04em;
+    color:var(--teal); margin-bottom:6px;
+  }
+  .property-map{
+    width:100%; height:200px; border-radius:10px; border:1px solid var(--line);
+    background:var(--paper-2);
+  }
+  @media (max-width:640px){
+    .property-maps{ grid-template-columns:1fr; }
+  }
+
   .property-contact{ font-size:14px; font-weight:600; margin:0 0 18px; }
   .property-contact a{ color:var(--teal); text-decoration:none; }
   .property-contact a:hover{ text-decoration:underline; }
