@@ -196,6 +196,23 @@ var galleries = {
     'Rentals/ElValle/ClosetELV1.jpg',
     'Rentals/ElValle/Bath.jpg',
     'Rentals/ElValle/Bath2.jpg'
+  ],
+  sandyln: [
+    'Rentals/SandyLn/Front_SandyLn.jpg',
+    'Rentals/SandyLn/LivingRoom_SandyLn.jpg',
+    'Rentals/SandyLn/LivingRoom2_SandyLn.jpg',
+    'Rentals/SandyLn/Kitchen1_SandyLn.jpg',
+    'Rentals/SandyLn/Kitchen2_SandyLn.jpg',
+    'Rentals/SandyLn/Bed1_SandyLn.jpg',
+    'Rentals/SandyLn/Bed2_SandyLn.jpg',
+    'Rentals/SandyLn/Bed2_Sandy_Ln.jpg',
+    'Rentals/SandyLn/Bath1_SandyLn.jpg',
+    'Rentals/SandyLn/Bath2_SandyLn.jpg',
+    'Rentals/SandyLn/Bath3_SandyLn.jpg',
+    'Rentals/SandyLn/CLoset_SandyLn.jpg',
+    'Rentals/SandyLn/HVA_SandyLn.jpg',
+    'Rentals/SandyLn/DriveWasjer_Hooks_SandyLn.jpg',
+    'Rentals/SandyLn/BackYard_SandyLn.jpg'
   ]
 };
 var lightboxState = { gallery: null, index: 0 };
