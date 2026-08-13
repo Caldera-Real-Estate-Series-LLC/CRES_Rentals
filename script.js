@@ -198,21 +198,21 @@ var galleries = {
     'Rentals/ElValle/Bath2.jpg'
   ],
   sandyln: [
-    'Rentals/SandyLn/Front_SandyLn.jpg',
-    'Rentals/SandyLn/LivingRoom_SandyLn.jpg',
-    'Rentals/SandyLn/LivingRoom2_SandyLn.jpg',
-    'Rentals/SandyLn/Kitchen1_SandyLn.jpg',
-    'Rentals/SandyLn/Kitchen2_SandyLn.jpg',
-    'Rentals/SandyLn/Bed1_SandyLn.jpg',
-    'Rentals/SandyLn/Bed2_SandyLn.jpg',
-    'Rentals/SandyLn/Bed2_Sandy_Ln.jpg',
-    'Rentals/SandyLn/Bath1_SandyLn.jpg',
-    'Rentals/SandyLn/Bath2_SandyLn.jpg',
-    'Rentals/SandyLn/Bath3_SandyLn.jpg',
-    'Rentals/SandyLn/CLoset_SandyLn.jpg',
-    'Rentals/SandyLn/HVA_SandyLn.jpg',
-    'Rentals/SandyLn/DriveWasjer_Hooks_SandyLn.jpg',
-    'Rentals/SandyLn/BackYard_SandyLn.jpg'
+    'Rentals/SandyLn/Front%20SandyLn.jpg',
+    'Rentals/SandyLn/LivingRoom%20SandyLn.jpg',
+    'Rentals/SandyLn/LivingRoom2%20SandyLn.jpg',
+    'Rentals/SandyLn/Kitchen1%20SandyLn.jpg',
+    'Rentals/SandyLn/Kitchen2%20SandyLn.jpg',
+    'Rentals/SandyLn/Bed1%20SandyLn.jpg',
+    'Rentals/SandyLn/Bed2%20SandyLn.jpg',
+    'Rentals/SandyLn/Bed2%20Sandy%20Ln.jpg',
+    'Rentals/SandyLn/Bath1%20SandyLn.jpg',
+    'Rentals/SandyLn/Bath2%20SandyLn.jpg',
+    'Rentals/SandyLn/Bath3%20SandyLn.jpg',
+    'Rentals/SandyLn/CLoset%20SandyLn.jpg',
+    'Rentals/SandyLn/HVA%20SandyLn.jpg',
+    'Rentals/SandyLn/DriveWasjer%20Hooks%20SandyLn.jpg',
+    'Rentals/SandyLn/BackYard%20SandyLn.jpg'
   ]
 };
 var lightboxState = { gallery: null, index: 0 };
