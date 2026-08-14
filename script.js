@@ -183,34 +183,23 @@ function initPropertyMaps(){
 
   Object.keys(propertyLocations).forEach(function(key){
     var loc = propertyLocations[key];
-    var cityEl = document.getElementById('map-' + key + '-city');
     var radiusEl = document.getElementById('map-' + key + '-radius');
+    if (!radiusEl) return;
 
-    if (cityEl) {
-      var cityMap = L.map(cityEl, { scrollWheelZoom: false, zoomControl: false }).setView([loc.lat, loc.lng], 12);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        maxZoom: 19
-      }).addTo(cityMap);
-      L.marker([loc.lat, loc.lng]).addTo(cityMap).bindPopup(loc.address);
-    }
-
-    if (radiusEl) {
-      var radiusMap = L.map(radiusEl, { scrollWheelZoom: false, zoomControl: false }).setView([loc.lat, loc.lng], 13);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-        maxZoom: 19
-      }).addTo(radiusMap);
-      L.marker([loc.lat, loc.lng]).addTo(radiusMap).bindPopup(loc.address);
-      var circle = L.circle([loc.lat, loc.lng], {
-        radius: MILES_2_IN_METERS,
-        color: '#B8492F',
-        fillColor: '#B8492F',
-        fillOpacity: 0.08,
-        weight: 2
-      }).addTo(radiusMap);
-      radiusMap.fitBounds(circle.getBounds());
-    }
+    var radiusMap = L.map(radiusEl, { scrollWheelZoom: false, zoomControl: false }).setView([loc.lat, loc.lng], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 19
+    }).addTo(radiusMap);
+    L.marker([loc.lat, loc.lng]).addTo(radiusMap).bindPopup(loc.address);
+    var circle = L.circle([loc.lat, loc.lng], {
+      radius: MILES_2_IN_METERS,
+      color: '#B8492F',
+      fillColor: '#B8492F',
+      fillOpacity: 0.08,
+      weight: 2
+    }).addTo(radiusMap);
+    radiusMap.fitBounds(circle.getBounds());
   });
 }
 initPropertyMaps();
