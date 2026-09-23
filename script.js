@@ -17,7 +17,7 @@ setLang('en');
 var WEB3FORMS_ACCESS_KEY = 'bc02cf0b-0519-4651-9df0-8a0e96103974';
 
 /* Paste your Apps Script "Web app URL" between the quotes below once you have it. */
-var SHEETS_WEBHOOK_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+var SHEETS_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbyX8nJx99gkK4cuC3MGIRK-V0vF1Z4Ib3vFjDJvxVQ4zfeE9VYfpxGudWOFo9kKn1Btjw/exec';
 
 function logApplicationToSheet(data){
   if (!SHEETS_WEBHOOK_URL || SHEETS_WEBHOOK_URL.indexOf('PASTE_YOUR') !== -1) return;
@@ -44,6 +44,15 @@ function downloadApplicationDoc(data){
     ['Employer', data.employer],
     ['Monthly income', data.income],
     ['Receives housing assistance', data.housing_assistance === 'Yes' ? 'Yes' : 'No'],
+    ['Reference 1 name', data.reference1_name],
+    ['Reference 1 phone', data.reference1_phone],
+    ['Reference 1 relationship', data.reference1_relationship],
+    ['Reference 2 name', data.reference2_name],
+    ['Reference 2 phone', data.reference2_phone],
+    ['Reference 2 relationship', data.reference2_relationship],
+    ['Reference 3 name', data.reference3_name],
+    ['Reference 3 phone', data.reference3_phone],
+    ['Reference 3 relationship', data.reference3_relationship],
     ['Notes', data.notes]
   ];
   var rowsHtml = fields.map(function(f){
