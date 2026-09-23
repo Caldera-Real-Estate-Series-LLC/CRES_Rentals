@@ -13,8 +13,22 @@ function setLang(lang){
 }
 setLang('en');
 
-/* ---------- Application form: Word download + email via Web3Forms ---------- */
+/* ---------- Application form: Word download + email via Web3Forms + Google Sheets ---------- */
 var WEB3FORMS_ACCESS_KEY = 'bc02cf0b-0519-4651-9df0-8a0e96103974';
+
+/* Paste your Apps Script "Web app URL" between the quotes below once you have it. */
+var SHEETS_WEBHOOK_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE';
+
+function logApplicationToSheet(data){
+  if (!SHEETS_WEBHOOK_URL || SHEETS_WEBHOOK_URL.indexOf('PASTE_YOUR') !== -1) return;
+  fetch(SHEETS_WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(data)
+  }).catch(function(){
+    /* Fail silently — email is still the primary notification channel */
+  });
+}
 
 function downloadApplicationDoc(data){
   var fields = [
@@ -94,6 +108,7 @@ if (applyForm) {
     .then(function(result){
       submitBtn.disabled = false;
       if (result.success) {
+        logApplicationToSheet(data);
         downloadApplicationDoc(data);
         showApplyResult('success');
         form.reset();
