@@ -35,7 +35,8 @@ header{
   letter-spacing:0.01em;
   white-space:nowrap;
 }
-.logo a{ text-decoration:none; color:inherit; }
+.logo a{ text-decoration:none; color:inherit; display:inline-flex; align-items:center; gap:8px; }
+.logo-icon{ height:28px; width:28px; flex-shrink:0; }
 nav a.current{ opacity:1; border-bottom:2px solid var(--clay); padding-bottom:2px; }
 nav{ display:flex; align-items:center; gap:28px; }
 nav a{
