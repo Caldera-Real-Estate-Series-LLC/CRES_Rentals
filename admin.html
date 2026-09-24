@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — The Cres Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .admin-wrap{ max-width:640px; margin:0 auto; padding:56px 28px 80px; }
+  .admin-gate{ text-align:center; padding:60px 28px; }
+  .admin-gate h2, .admin-panel h2{ font-family:var(--font-display); font-weight:500; margin:0 0 10px; }
+  .admin-gate input{
+    font-size:22px; text-align:center; letter-spacing:0.3em; max-width:180px;
+    padding:12px; border:1px solid var(--line); border-radius:8px; margin:18px 0; display:block; margin-left:auto; margin-right:auto;
+  }
+  .admin-gate-error{ color:var(--clay); font-size:14px; display:none; margin-top:8px; }
+  .admin-panel{ display:none; }
+  .admin-note{
+    font-size:14px; opacity:0.8; background:var(--paper-2); border:1px solid var(--line);
+    border-radius:10px; padding:12px 16px; margin-bottom:28px;
+  }
+  .admin-row{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:18px 0; border-bottom:1px solid var(--line); flex-wrap:wrap;
+  }
+  .admin-row-name{ font-weight:600; }
+  .admin-row-controls{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .admin-row select{
+    font-family:var(--font-body); font-size:15px; padding:9px 12px;
+    border:1px solid var(--line); border-radius:8px; background:#fff;
+  }
+  .admin-status-msg{ font-size:13px; margin-top:4px; width:100%; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo"><a href="index.html">The Cres Group</a></div>
+  </header>
+</div>
+
+<div class="admin-wrap">
+  <div id="admin-gate" class="admin-gate">
+    <h2>Admin access</h2>
+    <p>Enter the passcode to manage property statuses.</p>
+    <input type="password" id="admin-passcode-input" inputmode="numeric" maxlength="10" placeholder="••••">
+    <button class="btn btn-primary" onclick="checkPasscode()">Enter</button>
+    <p class="admin-gate-error" id="admin-gate-error">Incorrect passcode.</p>
+  </div>
+
+  <div id="admin-panel" class="admin-panel">
+    <h2>Property status</h2>
+    <p class="admin-note">Changing a status here updates the live site within a minute or two, and always sends a confirmation email to your inbox so you know when something changes &mdash; including if it wasn't you.</p>
+    <div id="admin-rows"><p>Loading current statuses&hellip;</p></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  var ADMIN_PASSCODE = '3122';
+  var PROPERTY_LABELS = {
+    rosalee: '2637 Rosalee Ave',
+    milpaverde: '464 Calle Milpa Verde St',
+    sandyln: '1115 Sandy Ln',
+    elvalle: '324 El Valle Dr'
+  };
+
+  function checkPasscode(){
+    var input = document.getElementById('admin-passcode-input').value;
+    if (input === ADMIN_PASSCODE) {
+      document.getElementById('admin-gate').style.display = 'none';
+      document.getElementById('admin-panel').style.display = 'block';
+      loadStatuses();
+    } else {
+      document.getElementById('admin-gate-error').style.display = 'block';
+    }
+  }
+
+  document.getElementById('admin-passcode-input').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') checkPasscode();
+  });
+
+  function loadStatuses(){
+    var container = document.getElementById('admin-rows');
+    fetch(SHEETS_WEBHOOK_URL)
+      .then(function(res){ return res.json(); })
+      .then(function(result){
+        container.innerHTML = '';
+        var statuses = (result && result.statuses) || {};
+        Object.keys(PROPERTY_LABELS).forEach(function(key){
+          var current = statuses[key] || 'available';
+          var row = document.createElement('div');
+          row.className = 'admin-row';
+          row.innerHTML =
+            '<div class="admin-row-name">' + PROPERTY_LABELS[key] + '</div>' +
+            '<div class="admin-row-controls">' +
+              '<select id="status-' + key + '">' +
+                '<option value="available"' + (current === 'available' ? ' selected' : '') + '>Available</option>' +
+                '<option value="rented"' + (current === 'rented' ? ' selected' : '') + '>Rented</option>' +
+                '<option value="coming_soon"' + (current === 'coming_soon' ? ' selected' : '') + '>Coming Soon</option>' +
+              '</select>' +
+              '<button class="btn btn-secondary" onclick="saveStatus(\'' + key + '\')">Save</button>' +
+              '<div class="admin-status-msg" id="msg-' + key + '"></div>' +
+            '</div>';
+          container.appendChild(row);
+        });
+      })
+      .catch(function(){
+        container.innerHTML = '<p style="color:var(--clay);">Could not load current statuses. Try reloading the page.</p>';
+      });
+  }
+
+  function saveStatus(key){
+    var select = document.getElementById('status-' + key);
+    var msg = document.getElementById('msg-' + key);
+    var newStatus = select.value;
+    msg.textContent = 'Saving…';
+    msg.style.color = '';
+
+    fetch(SHEETS_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({
+        admin_action: 'update_status',
+        passcode: ADMIN_PASSCODE,
+        propertyKey: key,
+        newStatus: newStatus
+      })
+    })
+    .then(function(res){ return res.json(); })
+    .then(function(result){
+      if (result.success) {
+        msg.style.color = 'var(--teal)';
+        msg.textContent = 'Saved — a confirmation email was sent.';
+      } else {
+        msg.style.color = 'var(--clay)';
+        msg.textContent = result.message || 'Something went wrong.';
+      }
+    })
+    .catch(function(){
+      msg.style.color = 'var(--clay)';
+      msg.textContent = 'Network error — try again.';
+    });
+  }
+</script>
+</body>
+</html>

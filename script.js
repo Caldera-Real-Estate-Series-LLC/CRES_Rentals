@@ -228,6 +228,28 @@ function initPropertyMaps(){
 }
 initPropertyMaps();
 
+/* ---------- Dynamic property status (Available / Rented / Coming Soon) ---------- */
+function applyPropertyStatuses(){
+  var section = document.querySelector('[data-show-status]');
+  if (!section) return;
+  var targetStatus = section.getAttribute('data-show-status');
+
+  fetch(SHEETS_WEBHOOK_URL)
+    .then(function(res){ return res.json(); })
+    .then(function(result){
+      var statuses = (result && result.statuses) || {};
+      document.querySelectorAll('[data-property-key]').forEach(function(card){
+        var key = card.getAttribute('data-property-key');
+        var status = statuses[key] || 'available';
+        card.style.display = (status === targetStatus) ? '' : 'none';
+      });
+    })
+    .catch(function(){
+      /* If the status check fails, leave every card visible as a safe fallback */
+    });
+}
+applyPropertyStatuses();
+
 /* ---------- Property galleries & lightbox ---------- */
 var galleries = {
   rosalee: [

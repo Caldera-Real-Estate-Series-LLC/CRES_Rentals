@@ -42,7 +42,8 @@
     </nav>
   </header>
 </div>
-<section class="properties-section" id="properties">
+
+<section class="properties-section" id="properties" data-show-status="available">
   <div class="wrap">
     <div class="properties-intro">
       <span class="eyebrow" data-lang="en">Available now</span>
@@ -53,7 +54,7 @@
       <p class="properties-sub" data-lang="es">Pronto habr&aacute; m&aacute;s propiedades &mdash; esto es lo que est&aacute; disponible ahora.</p>
     </div>
 
-    <div class="property-card">
+    <div class="property-card" data-property-key="rosalee">
       <div class="property-gallery">
         <img class="property-main-photo" id="rosalee-main" src="Rentals/Rosalee/Apt%203/FrontRosalee.jpg" alt="2637 Rosalee Ave" onclick="openLightbox('rosalee', 0)">
         <div class="property-thumbs">
@@ -111,7 +112,7 @@
       </div>
     </div>
 
-    <div class="property-card">
+    <div class="property-card" data-property-key="milpaverde">
       <div class="property-gallery">
         <img class="property-main-photo" id="milpaverde-main" src="Rentals/MilpaVerde/Front-Milpa4.jpg" alt="464 Calle Milpa Verde St" onclick="openLightbox('milpaverde', 0)">
         <div class="property-thumbs">
@@ -165,7 +166,7 @@
       </div>
     </div>
 
-    <div class="property-card">
+    <div class="property-card" data-property-key="sandyln">
       <div class="property-gallery">
         <img class="property-main-photo" id="sandyln-main" src="Rentals/SandyLn/Front%20SandyLn.jpg" alt="1115 Sandy Ln" onclick="openLightbox('sandyln', 0)">
         <div class="property-thumbs">
@@ -237,6 +238,7 @@
   <img id="lightbox-img" src="" alt="">
   <button class="lightbox-next" onclick="stepLightbox(1)">&#8250;</button>
 </div>
+
 <footer class="band">
   <div class="wrap">
     <div class="tag" data-lang="en">Browse our available homes, or reach out &mdash; we&rsquo;re happy to help.</div>
